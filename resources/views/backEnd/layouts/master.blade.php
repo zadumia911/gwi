@@ -11,7 +11,13 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -127,7 +133,31 @@
 <script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('public/backEnd/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/jszip/jszip.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('public/backEnd/admin')}}/dist/js/adminlte.min.js"></script>
+<script src="{{asset('public/backEnd/admin')}}/dist/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
+<script>
+$(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    
+  });
+</script>
 </body>
 </html>

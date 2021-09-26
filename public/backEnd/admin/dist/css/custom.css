@@ -114,9 +114,50 @@ ul,ol,li{
 .card-title {
     float: left !important;
 }
-
+ul.manage-btn-group .btn, ul.manage-btn-group .btn {
+    font-size: 12px;
+    height: 30px !important;
+    width: 30px !important;
+    text-align: center;
+    padding: 0 0;
+    line-height: 30px;
+    border-radius: 0;
+    float: left;
+    margin: 0 2px;
+}
+.dt-buttons.btn-group .btn {
+    margin-right: 3px;
+    border-radius: 0;
+    font-size: 14px;
+}
+.short-icon.text-right a {
+    border-radius: 50%;
+    font-size: 12px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    padding: 0 0;
+    line-height: 30px;
+}
+.page-title h6 {
+    padding-top: 3px;
+}
+.table-bordered thead td, .table-bordered thead th {
+    border-bottom-width: 0;
+    border-top-width: 0;
+}
+.content-wrapper {
+    padding: 0 10px;
+}
+.card {
+    border-radius: 0;
+}
 .short_button {
     float: right;
+}
+.small_image{
+    height: 50px;
+    width: 50px;
 }
 .short_button a {
     background: #1abba2;

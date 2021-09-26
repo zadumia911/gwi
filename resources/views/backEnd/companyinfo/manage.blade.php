@@ -1,86 +1,73 @@
 @extends('backEnd.layouts.master')
 @section('title','Companyinfo Manage')
 @section('content')
-<!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Companyinfo Manage</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item">Companyinfo</li>
-              <li class="breadcrumb-item active"><a href="#">Manage</a></li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="page-title">
+            <h6>Companyinfo Manage</h6>
           </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <div class="col-sm-6">
+          <div class="short-icon text-right">
+            <a href="{{url('superadmin/companyinfo/add')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /.content -->
+    <!-- /.container-fluid -->
+  </section>
+
+  <div class="card">
+    <div class="card-body">
+      <table id="example1" class="table table-bordered ">
+        <thead>
+          <tr>
+            <th>SL</th>
+            <th>Branch name</th>
+            <th>Address</th>
+            <th>Contact no</th>
+            <th>Logo</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($show_datas as $key=>$value)
+          <tr>
+            <td>{{$loop->iteration}}</td>
+            <td>{{$value->branch_name}}</td>
+            <td>{{$value->address}}</td>
+            <td>{{$value->phone}}</td>
+            <td><img src="{{asset($value->image)}}" class="small_image" alt=""></td>
+            <td>{{$value->status ==1 ? 'Active' : 'Inactive'}}</td>
+            <td>
+              <ul class="manage-btn-group">
+                <li><a href="{{url('superadmin/companyinfo/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
+                <li>@if($value->status==1)
+                  <form action="{{url('superadmin/companyinfo/inactive')}}" method="POST">
+                      @csrf
+                      <input type="hidden" name="hidden_id" value="{{$value->id}}">
+                      <button type="submit" class="btn btn-secondary" title="Inactive" onclick="return confirm('Are you want change this?')"><i class="fa fa-thumbs-down"></i></button>
+                  </form>
+                @else
+                <form action="{{url('superadmin/companyinfo/active')}}" method="POST">
+                  @csrf
+                  <input type="hidden" name="hidden_id" value="{{$value->id}}">
+                  <button type="submit" class="btn btn-success"  onclick="return confirm('Are you want change this?')" title="Active"><i class="fa fa-thumbs-up"></i></button> 
+                </form></li>
+                @endif
+              </ul>
+          </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
 @endsection
