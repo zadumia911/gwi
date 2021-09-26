@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+Route::get('/',function(){
+return view('backEnd.auth.login');
+});
 Auth::routes();
 Route::group(['as'=>'superadmin.', 'prefix'=>'superadmin', 'namespace'=>'superadmin','middleware'=>[ 'auth', 'superadmin']], function(){
  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
