@@ -147,6 +147,7 @@
 
 <!-- jQuery -->
 <script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('public/backEnd/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -176,9 +177,9 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 // Select2
-  $('.select2').select2()
+  $('.select2').select2();
 </script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 <script>
   $(function () {
     $(".fileupload").change(function () {
