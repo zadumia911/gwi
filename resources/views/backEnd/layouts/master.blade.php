@@ -10,14 +10,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
+
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- DataTables end -->
 
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -100,6 +104,18 @@
                   <p>Company Info</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{url('superadmin/user/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('superadmin/user/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage User</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -150,14 +166,47 @@
 <script src="{{asset('public/backEnd/admin')}}/dist/js/adminlte.min.js"></script>
 <script src="{{asset('public/backEnd/admin')}}/dist/js/toastr.min.js"></script>
 {!! Toastr::message() !!}
+<script src="{{asset('public/backEnd/admin')}}/plugins/select2/js/select2.full.min.js"></script>
 <script>
-$(function () {
+ //DataTables
+ $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    
   });
+// Select2
+  $('.select2').select2()
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+  $(function () {
+    $(".fileupload").change(function () {
+        $(".dvPreview").html("");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+        if (regex.test($(this).val().toLowerCase())) {
+            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                $(".dvPreview").show();
+                $(".dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+            }
+            else {
+                if (typeof (FileReader) != "undefined") {
+                    $(".dvPreview").show();
+                    $(".dvPreview").append("<img />");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(".dvPreview img").attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    alert("This browser does not support FileReader.");
+                }
+            }
+        } else {
+            alert("Please upload a valid image file.");
+        }
+    });
+});
 </script>
 </body>
 </html>

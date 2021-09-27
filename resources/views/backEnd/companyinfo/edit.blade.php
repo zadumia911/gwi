@@ -1,15 +1,18 @@
-@extends('backEnd.layouts.master') @section('title','Companyinfo Edit') @section('content')
+@extends('backEnd.layouts.master') 
+@section('title','Companyinfo Edit') 
+@section('content')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Companyinfo Edit</h1>
+               <div class="page-title">
+                 <h6>Companyinfo Update</h6>
+              </div>
             </div>
             <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Companyinfo Edit</li>
-                </ol>
+                <div class="short-icon text-right">
+                    <a href="{{url('superadmin/companyinfo/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
+                </div>
             </div>
         </div>
     </div>
@@ -17,19 +20,8 @@
 </section>
 
 <div class="card">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="short-icon text-right">
-                    <a href="{{url('superadmin/companyinfo/manage')}}" class="btn btn-primary"><i class="fa fa-cogs"></i> Manage</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.card-header -->
-
     <!-- form start -->
-    <form action="{{url('/superadmin/companyinfo/update')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{url('/superadmin/companyinfo/update')}}" method="POST" enctype="multipart/form-data" name="editForm">
         <input type="hidden" value="{{$edit_data->id}}" name="hidden_id">
     	@csrf
         <div class="card-body">
@@ -70,29 +62,40 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleInputFile">Image</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input{{ $errors->has('image') ? ' is-invalid' : '' }}" id="image" />
-                                <label class="custom-file-label" for="image">Choose file</label>
-                            </div>
-                            <img class="backend_image" src="{{asset($edit_data->image)}}">
+                            <input type="file" name="image" class="fileupload form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" id="image" />
+                           
 							@if ($errors->has('image'))
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $errors->first('image') }}</strong>
 							</span>
 							@endif
-                        </div>
+                        <div class="dvPreview"><img src="{{asset($edit_data->image)}}"></div>
                     </div>
-                </div>                
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                     <label for="" class="d-block">Published Status</label>
+                      <div class="icheck-primary d-inline">
+                        <input type="radio" id="active" value="1" name="status" checked>
+                        <label for="active">Active</label>
+                      </div>
+                      <div class="icheck-primary d-inline">
+                        <input type="radio" id="inactive" value="0" name="status">
+                        <label for="inactive">Inactive</label>
+                      </div>
+                    </div>
+                </div>              
             </div>
         </div>
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="reset" class="btn btn-default">clear</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-default">Clear</button>
         </div>
     </form>
 </div>
-
+<script type="text/javascript">
+    document.forms['editForm'].elements['status'].value={{$edit_data->status}}
+</script>
 @endsection

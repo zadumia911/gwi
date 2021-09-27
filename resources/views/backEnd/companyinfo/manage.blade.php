@@ -31,7 +31,7 @@
             <th>Contact no</th>
             <th>Logo</th>
             <th>Status</th>
-            <th>Action</th>
+            <th class="action_button">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
             <td>{{$value->phone}}</td>
             <td><img src="{{asset($value->image)}}" class="small_image" alt=""></td>
             <td>{{$value->status ==1 ? 'Active' : 'Inactive'}}</td>
-            <td>
+            <td class="action_button">
               <ul class="manage-btn-group">
                 <li><a href="{{url('superadmin/companyinfo/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
                 <li>@if($value->status==1)

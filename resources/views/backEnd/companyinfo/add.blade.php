@@ -1,42 +1,32 @@
-@extends('backEnd.layouts.master') @section('title','Companyinfo Add') @section('content')
+@extends('backEnd.layouts.master') 
+@section('title','Companyinfo Add') 
+@section('content')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Companyinfo Add</h1>
+               <div class="page-title">
+                    <h6>Companyinfo Add</h6>
+              </div>
             </div>
             <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Companyinfo Add</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <!-- /.container-fluid -->
-</section>
-
-<div class="card">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-sm-12">
                 <div class="short-icon text-right">
-                    <a href="{{url('superadmin/companyinfo/manage')}}" class="btn btn-primary"><i class="fa fa-cogs"></i> Manage</a>
+                    <a href="{{url('superadmin/companyinfo/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /.card-header -->
-
+</section>
+<div class="card">
     <!-- form start -->
     <form action="{{url('/superadmin/companyinfo/save')}}" method="POST" enctype="multipart/form-data">
     	@csrf
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="branch_name">Branch Name</label>
-                        <input type="text" class="form-control {{ $errors->has('branch_name') ? ' is-invalid' : '' }}" id="branch_name" name="branch_name" placeholder="Enter Branch Name ...." value="{{ old('branch_name') }}" />
+                        <input type="text" class="form-control {{ $errors->has('branch_name') ? ' is-invalid' : '' }}" id="branch_name" name="branch_name" placeholder="Enter Branch Name ...." value="{{ old('branch_name') }}" required/>
                         @if ($errors->has('branch_name'))
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $errors->first('branch_name') }}</strong>
@@ -44,10 +34,10 @@
 						@endif
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="phone">Contact No</label>
-                        <input type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" id="phone" name="phone" placeholder="Enter Phone Number ...." />
+                        <input type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" id="phone" value="{{old('phone')}}" name="phone" placeholder="Enter Phone Number ...." required/>
 						@if ($errors->has('phone'))
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $errors->first('phone') }}</strong>
@@ -55,41 +45,54 @@
 						@endif
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label>Address</label>
-                        <textarea class="form-control {{ $errors->has('branch_name') ? ' is-invalid' : '' }}" name="address" rows="3" placeholder="Enter Address ..."></textarea>
-                        						@if ($errors->has('phone'))
+                        <textarea class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" rows="3" placeholder="Enter Address ..." required>{{old('address')}}</textarea>
+                        @if ($errors->has('address'))
 						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('phone') }}</strong>
+							<strong>{{ $errors->first('address') }}</strong>
 						</span>
 						@endif
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="exampleInputFile">Image</label>
                         <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input{{ $errors->has('image') ? ' is-invalid' : '' }}" id="image" />
-                                <label class="custom-file-label" for="image">Choose file</label>
-                            </div>
+                            <input type="file" name="image" class="fileupload form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" required />
 							@if ($errors->has('image'))
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $errors->first('image') }}</strong>
 							</span>
 							@endif
                         </div>
+                        <div class="dvPreview"></div>
                     </div>
                 </div>
-                
+                <div class="col-sm-6">
+                    <div class="form-group clearfix">
+                     <label for="" class="d-block">Published Status</label>
+                      <div class="icheck-primary d-inline">
+                        <input type="radio" id="active" value="1" name="status" checked>
+                        <label for="active">
+                            Active
+                        </label>
+                      </div>
+                      <div class="icheck-primary d-inline">
+                        <input type="radio" id="inactive" value="0" name="status">
+                        <label for="inactive">
+                            Inactive
+                        </label>
+                      </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /.card-body -->
-
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="reset" class="btn btn-default">clear</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-default">Clear</button>
         </div>
     </form>
 </div>

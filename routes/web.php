@@ -8,6 +8,7 @@ Auth::routes();
 Route::group(['as'=>'superadmin.', 'prefix'=>'superadmin', 'namespace'=>'superadmin','middleware'=>[ 'auth', 'superadmin']], function(){
    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+   //Company info 
    Route::get('/companyinfo/add', 'CompanyinfoController@add');
    Route::get('/companyinfo/manage', 'CompanyinfoController@manage');
    Route::post('/companyinfo/save', 'CompanyinfoController@save');
@@ -16,6 +17,16 @@ Route::group(['as'=>'superadmin.', 'prefix'=>'superadmin', 'namespace'=>'superad
    Route::post('/companyinfo/inactive','CompanyinfoController@inactive');
    Route::post('/companyinfo/active','CompanyinfoController@active');
    Route::post('/companyinfo/delete','CompanyinfoController@destroy');
+
+   // User
+    Route::get('/user/add', 'UserController@add');
+    Route::post('/user/save', 'UserController@save');
+    Route::get('/user/edit/{id}', 'UserController@edit');
+    Route::post('/user/update', 'UserController@update');
+    Route::get('/user/manage', 'UserController@manage');
+    Route::post('/user/inactive', 'UserController@inactive');
+    Route::post('/user/active', 'UserController@active');
+    Route::post('/user/delete', 'UserController@destroy');
 });
 
 Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middleware'=>['auth', 'admin']], function(){

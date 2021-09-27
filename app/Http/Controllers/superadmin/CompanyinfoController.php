@@ -4,8 +4,9 @@ namespace App\Http\Controllers\superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Toastr;
 use App\Companyinfo;
+use File;
+use Toastr;
 
 class CompanyinfoController extends Controller
 {
@@ -18,8 +19,8 @@ class CompanyinfoController extends Controller
             'address'=>'required',
             'phone'=>'required',
             'image'=>'required',
+            'status'=>'required',
         ]);
-
         // image upload
         $file = $request->file('image');
         $name = $file->getClientOriginalName();
@@ -31,6 +32,7 @@ class CompanyinfoController extends Controller
         $store_data->branch_name    =   $request->branch_name;
         $store_data->address        =   $request->address;
         $store_data->phone          =   $request->phone;
+        $store_data->status         =   $request->status;
         $store_data->image          =   $fileUrl;
         $store_data->save();
         Toastr::success('success!!', 'Data insert successfully');
@@ -45,8 +47,13 @@ class CompanyinfoController extends Controller
         return view('backEnd.companyinfo.edit',compact('edit_data'));
     }
     public function update(Request $request){
+        $this->validate($request,[
+            'branch_name'=>'required',
+            'address'=>'required',
+            'phone'=>'required',
+            'status'=>'required',
+        ]);
         $update_data = Companyinfo::find($request->hidden_id);
-
         $update_file = $request->file('image');
         if ($update_file) {
             $name = $update_file->getClientOriginalName();
@@ -61,6 +68,7 @@ class CompanyinfoController extends Controller
         $update_data->branch_name   =   $request->branch_name;
         $update_data->address       =   $request->address;
         $update_data->phone         =   $request->phone;
+        $update_data->status        =   $request->status;
         $update_data->image         =   $fileUrl;
         $update_data->save();
         Toastr::success('success!!', 'Data update successfully');
