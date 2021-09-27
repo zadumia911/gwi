@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Companyinfo;
 use File;
 use Toastr;
-
 class CompanyinfoController extends Controller
 {
     public function add(){

@@ -19,18 +19,27 @@ Route::group(['as'=>'superadmin.', 'prefix'=>'superadmin', 'namespace'=>'superad
    Route::post('/companyinfo/delete','CompanyinfoController@destroy');
 
    // User
-    Route::get('/user/add', 'UserController@add');
-    Route::post('/user/save', 'UserController@save');
-    Route::get('/user/edit/{id}', 'UserController@edit');
-    Route::post('/user/update', 'UserController@update');
-    Route::get('/user/manage', 'UserController@manage');
-    Route::post('/user/inactive', 'UserController@inactive');
-    Route::post('/user/active', 'UserController@active');
-    Route::post('/user/delete', 'UserController@destroy');
+   Route::get('/user/add', 'UserController@add');
+   Route::post('/user/save', 'UserController@save');
+   Route::get('/user/edit/{id}', 'UserController@edit');
+   Route::post('/user/update', 'UserController@update');
+   Route::get('/user/manage', 'UserController@manage');
+   Route::post('/user/inactive', 'UserController@inactive');
+   Route::post('/user/active', 'UserController@active');
+   Route::post('/user/delete', 'UserController@destroy');
 });
 
 Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middleware'=>['auth', 'admin']], function(){
  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('employee/add', 'EmployeeController@add');
+Route::get('employee/manage', 'EmployeeController@manage');
+Route::post('employee/save', 'EmployeeController@save');
+Route::get('employee/edit/{id}', 'EmployeeController@edit');
+Route::post('employee/update', 'EmployeeController@update');
+Route::post('employee/inactive','EmployeeController@inactive');
+Route::post('employee/active','EmployeeController@active');
+Route::post('employee/delete','EmployeeController@destroy');
 });
 
 Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middleware'=>['auth', 'editor']], function(){

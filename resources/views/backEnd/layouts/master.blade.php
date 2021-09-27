@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -79,8 +80,6 @@
       <!-- Sidebar Menu -->
       <nav>
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-home"></i>
@@ -90,11 +89,12 @@
             </a>
           </li>
           <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
+              <i class="nav-icon fa fa-cog"></i>
               <p>
                 Setting
-                <i class="fas fa-angle-left right"></i>
+                <i class="fas fa-caret-right right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -118,13 +118,38 @@
               </li>
             </ul>
           </li>
+          <!-- nav-item end -->
+          <li class="nav-item">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-user-tie"></i>
+              <p>
+               Salary Payment
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('admin/employee/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Employee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/employee/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Employee</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     @yield('content')
@@ -135,7 +160,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+     Green World International
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; @php echo date('Y') @endphp All rights reserved by GWI. Developed By <a href="https://websolutionit.com" target="_blank">Websolution IT</a>.</strong> 
@@ -147,9 +172,9 @@
 
 <!-- jQuery -->
 <script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('public/backEnd/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{asset('public/backEnd/admin')}}/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="{{asset('public/backEnd/admin')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -168,6 +193,7 @@
 <script src="{{asset('public/backEnd/admin')}}/dist/js/toastr.min.js"></script>
 {!! Toastr::message() !!}
 <script src="{{asset('public/backEnd/admin')}}/plugins/select2/js/select2.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
  //DataTables
  $(function () {
@@ -178,6 +204,7 @@
   });
 // Select2
   $('.select2').select2();
+  flatpickr(".myDate");
 </script>
 
 <script>
