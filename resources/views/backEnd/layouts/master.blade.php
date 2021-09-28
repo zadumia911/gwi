@@ -120,7 +120,6 @@
           </li>
           <!-- nav-item end -->
           <li class="nav-item">
-          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-user-tie"></i>
               <p>
@@ -139,6 +138,12 @@
                 <a href="{{url('admin/employee/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Employee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/salaryhead/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Salary Head</p>
                 </a>
               </li>
             </ul>

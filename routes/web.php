@@ -32,14 +32,25 @@ Route::group(['as'=>'superadmin.', 'prefix'=>'superadmin', 'namespace'=>'superad
 Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middleware'=>['auth', 'admin']], function(){
  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('employee/add', 'EmployeeController@add');
-Route::get('employee/manage', 'EmployeeController@manage');
-Route::post('employee/save', 'EmployeeController@save');
-Route::get('employee/edit/{id}', 'EmployeeController@edit');
-Route::post('employee/update', 'EmployeeController@update');
-Route::post('employee/inactive','EmployeeController@inactive');
-Route::post('employee/active','EmployeeController@active');
-Route::post('employee/delete','EmployeeController@destroy');
+   // EmployeeController
+   Route::get('employee/add', 'EmployeeController@add');
+   Route::get('employee/manage', 'EmployeeController@manage');
+   Route::post('employee/save', 'EmployeeController@save');
+   Route::get('employee/edit/{id}', 'EmployeeController@edit');
+   Route::post('employee/update', 'EmployeeController@update');
+   Route::post('employee/inactive','EmployeeController@inactive');
+   Route::post('employee/active','EmployeeController@active');
+   Route::post('employee/delete','EmployeeController@destroy');
+
+   // SalaryheadController
+   Route::get('salaryhead/add', 'SalaryheadController@add');
+   Route::get('salaryhead/manage', 'SalaryheadController@manage');
+   Route::post('salaryhead/save', 'SalaryheadController@save');
+   Route::get('salaryhead/edit/{id}', 'SalaryheadController@edit');
+   Route::post('salaryhead/update', 'SalaryheadController@update');
+   Route::post('salaryhead/inactive','SalaryheadController@inactive');
+   Route::post('salaryhead/active','SalaryheadController@active');
+   Route::post('salaryhead/delete','SalaryheadController@destroy');
 });
 
 Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middleware'=>['auth', 'editor']], function(){
