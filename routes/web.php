@@ -51,6 +51,16 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('salaryhead/inactive','SalaryheadController@inactive');
    Route::post('salaryhead/active','SalaryheadController@active');
    Route::post('salaryhead/delete','SalaryheadController@destroy');
+
+   // SalaryController
+   Route::get('salary/add', 'SalaryController@add');
+   Route::get('salary/manage', 'SalaryController@manage');
+   Route::post('salary/save', 'SalaryController@save');
+   Route::get('salary/edit/{id}', 'SalaryController@edit');
+   Route::post('salary/update', 'SalaryController@update');
+   Route::post('salary/inactive','SalaryController@inactive');
+   Route::post('salary/active','SalaryController@active');
+   Route::post('salary/delete','SalaryController@destroy');
 });
 
 Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middleware'=>['auth', 'editor']], function(){

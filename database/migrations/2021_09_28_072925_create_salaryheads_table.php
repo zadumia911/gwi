@@ -15,7 +15,7 @@ class CreateSalaryheadsTable extends Migration
     {
         Schema::create('salaryheads', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->length('155');
             $table->tinyInteger('status');
             $table->timestamps();
         });

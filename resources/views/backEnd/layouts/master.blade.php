@@ -141,9 +141,27 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{url('admin/salaryhead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Add Salary Head</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{url('admin/salaryhead/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Salary Head</p>
+                  <p>Manage Salary Head</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/salary/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Salary</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/salary/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Salary</p>
                 </a>
               </li>
             </ul>
