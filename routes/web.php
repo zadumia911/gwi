@@ -90,7 +90,17 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('withdraw/update', 'WithdrawController@update');
    Route::post('withdraw/inactive','WithdrawController@inactive');
    Route::post('withdraw/active','WithdrawController@active');
-   Route::post('withdraw/delete','WithdrawController@destroy');  
+   Route::post('withdraw/delete','WithdrawController@destroy'); 
+
+   // Withdraw Controller 
+   Route::get('deposit/add', 'DepositController@add');
+   Route::get('deposit/manage', 'DepositController@manage');
+   Route::post('deposit/save', 'DepositController@save');
+   Route::get('deposit/edit/{id}', 'DepositController@edit');
+   Route::post('deposit/update', 'DepositController@update');
+   Route::post('deposit/inactive','DepositController@inactive');
+   Route::post('deposit/active','DepositController@active');
+   Route::post('deposit/delete','DepositController@destroy');  
 
    // Admin reports controller
    Route::get('employee-salary/report','ReportsController@empsalaryreport');

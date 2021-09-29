@@ -218,6 +218,18 @@
                   <p>Manage Bank Withdraw</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{url('admin/deposit/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bank Deposit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/deposit/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Bank Deposit</p>
+                </a>
+              </li>
             </ul>
           </li>
           <!-- nav-item end -->

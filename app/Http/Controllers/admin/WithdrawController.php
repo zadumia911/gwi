@@ -49,7 +49,7 @@ class WithdrawController extends Controller
         ]);
         $update_data = Withdraw::find($request->hidden_id);
         $update_data->bank_id      =   $request->bank_id;
-        $update_data->cheque_number =   $request->cheque_number;
+        $update_data->cheque_number=   $request->cheque_number;
         $update_data->amount       =   $request->amount;
         $update_data->note         =   $request->note;
         $update_data->status       =   $request->status;
