@@ -243,37 +243,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('admin/category/add')}}" class="nav-link">
+                <a href="{{url('editor/category/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('admin/category/manage')}}" class="nav-link">
+                <a href="{{url('editor/category/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('admin/brand/add')}}" class="nav-link">
+                <a href="{{url('editor/brand/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Brand</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('admin/brand/manage')}}" class="nav-link">
+                <a href="{{url('editor/brand/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Brand</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('admin/item/add')}}" class="nav-link">
+                <a href="{{url('editor/item/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Item</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('admin/item/manage')}}" class="nav-link">
+                <a href="{{url('editor/item/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Item</p>
                 </a>

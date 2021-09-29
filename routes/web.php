@@ -102,7 +102,17 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('deposit/active','DepositController@active');
    Route::post('deposit/delete','DepositController@destroy');  
 
-    // Category Controller
+     
+
+   // Admin reports controller
+   Route::get('employee-salary/report','ReportsController@empsalaryreport');
+
+});
+
+Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middleware'=>['auth', 'editor']], function(){
+ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+  // Category Controller
    Route::get('category/add', 'CategoryController@add');
    Route::get('category/manage', 'CategoryController@manage');
    Route::post('category/save', 'CategoryController@save');
@@ -130,15 +140,7 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('item/update', 'DepositController@update');
    Route::post('item/inactive','DepositController@inactive');
    Route::post('item/active','DepositController@active');
-   Route::post('item/delete','DepositController@destroy');  
-
-   // Admin reports controller
-   Route::get('employee-salary/report','ReportsController@empsalaryreport');
-
-});
-
-Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middleware'=>['auth', 'editor']], function(){
- Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+   Route::post('item/delete','DepositController@destroy');
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){
