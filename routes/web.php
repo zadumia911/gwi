@@ -92,7 +92,7 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('withdraw/active','WithdrawController@active');
    Route::post('withdraw/delete','WithdrawController@destroy'); 
 
-   // Withdraw Controller 
+   // Deposit Controller 
    Route::get('deposit/add', 'DepositController@add');
    Route::get('deposit/manage', 'DepositController@manage');
    Route::post('deposit/save', 'DepositController@save');
@@ -101,6 +101,36 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('deposit/inactive','DepositController@inactive');
    Route::post('deposit/active','DepositController@active');
    Route::post('deposit/delete','DepositController@destroy');  
+
+    // Category Controller
+   Route::get('category/add', 'CategoryController@add');
+   Route::get('category/manage', 'CategoryController@manage');
+   Route::post('category/save', 'CategoryController@save');
+   Route::get('category/edit/{id}', 'CategoryController@edit');
+   Route::post('category/update', 'CategoryController@update');
+   Route::post('category/inactive','CategoryController@inactive');
+   Route::post('category/active','CategoryController@active');
+   Route::post('category/delete','CategoryController@destroy');  
+
+   // Brand Controller 
+   Route::get('brand/add', 'WithdrawController@add');
+   Route::get('brand/manage', 'WithdrawController@manage');
+   Route::post('brand/save', 'WithdrawController@save');
+   Route::get('brand/edit/{id}', 'WithdrawController@edit');
+   Route::post('brand/update', 'WithdrawController@update');
+   Route::post('brand/inactive','WithdrawController@inactive');
+   Route::post('brand/active','WithdrawController@active');
+   Route::post('brand/delete','WithdrawController@destroy'); 
+
+   // Item Controller 
+   Route::get('item/add', 'DepositController@add');
+   Route::get('item/manage', 'DepositController@manage');
+   Route::post('item/save', 'DepositController@save');
+   Route::get('item/edit/{id}', 'DepositController@edit');
+   Route::post('item/update', 'DepositController@update');
+   Route::post('item/inactive','DepositController@inactive');
+   Route::post('item/active','DepositController@active');
+   Route::post('item/delete','DepositController@destroy');  
 
    // Admin reports controller
    Route::get('employee-salary/report','ReportsController@empsalaryreport');
