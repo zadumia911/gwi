@@ -17,6 +17,7 @@ class CreateSalariesTable extends Migration
             $table->id();
             $table->string('date')->length('50');
             $table->integer('employee_id');
+            $table->integer('salary');
             $table->integer('amount');
             $table->tinyInteger('salaryhead_id');
             $table->string('note')->length('255')->nullable();

@@ -72,6 +72,8 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('employee-payment/active','EmployeepaymentController@active');
    Route::post('employee-payment/delete','EmployeepaymentController@destroy');
 
+   // Admin reports controller
+   Route::get('employee-salary/report','ReportsController@empsalaryreport');
 
 });
 

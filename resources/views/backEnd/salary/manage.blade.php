@@ -28,6 +28,7 @@
             <th>SL</th>
             <th>Date</th>
             <th>Employee</th>
+            <th>Salary</th>
             <th>Amount</th>
             <th>Status</th>
             <th class="action_button">Action</th>
@@ -39,6 +40,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$value->date}}</td>
             <td>{{$value->employee->name}}</td>
+            <td>{{$value->salary}}</td>
             <td>{{$value->amount}}</td>
             <td>{{$value->status ==1 ? 'Active' : 'Inactive'}}</td>
             <td class="action_button">

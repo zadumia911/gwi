@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Salaryhead;
+use App\Employee;
 use App\Salary;
 use Toastr;
 class SalaryController extends Controller
@@ -21,10 +22,12 @@ class SalaryController extends Controller
             'salaryhead_id'=>'required',
             'status'=>'required',
         ]);
+        $employee = Employee::find($request->employee_id);
         $store_data                 =   new Salary();
         $store_data->date           =   $request->date;
         $store_data->employee_id    =   $request->employee_id;
         $store_data->amount         =   $request->amount;
+        $store_data->salary         =   $employee->salary;
         $store_data->salaryhead_id  =   $request->salaryhead_id;
         $store_data->note           =   $request->note;
         $store_data->status         =   $request->status;

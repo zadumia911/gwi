@@ -176,6 +176,12 @@
                   <p>Manage Payment</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{url('admin/employee-salary/report')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Salary Report</p>
+                </a>
+              </li>
             </ul>
           </li>
           <!-- nav-item end -->
