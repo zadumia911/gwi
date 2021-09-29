@@ -72,7 +72,7 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('employee-payment/active','EmployeepaymentController@active');
    Route::post('employee-payment/delete','EmployeepaymentController@destroy');
 
-   // Bank 
+   // Bank Controller
    Route::get('bank/add', 'BankController@add');
    Route::get('bank/manage', 'BankController@manage');
    Route::post('bank/save', 'BankController@save');
@@ -81,6 +81,16 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('bank/inactive','BankController@inactive');
    Route::post('bank/active','BankController@active');
    Route::post('bank/delete','BankController@destroy');  
+
+   // Withdraw Controller 
+   Route::get('withdraw/add', 'WithdrawController@add');
+   Route::get('withdraw/manage', 'WithdrawController@manage');
+   Route::post('withdraw/save', 'WithdrawController@save');
+   Route::get('withdraw/edit/{id}', 'WithdrawController@edit');
+   Route::post('withdraw/update', 'WithdrawController@update');
+   Route::post('withdraw/inactive','WithdrawController@inactive');
+   Route::post('withdraw/active','WithdrawController@active');
+   Route::post('withdraw/delete','WithdrawController@destroy');  
 
    // Admin reports controller
    Route::get('employee-salary/report','ReportsController@empsalaryreport');

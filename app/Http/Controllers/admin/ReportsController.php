@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Salary;
 use App\Employee;
-
 class ReportsController extends Controller
 {
     public function empsalaryreport(Request $request)
