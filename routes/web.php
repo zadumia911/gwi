@@ -132,15 +132,15 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('brand/active','BrandController@active');
    Route::post('brand/delete','BrandController@destroy'); 
 
-   // Item Controller 
-   Route::get('item/add', 'DepositController@add');
-   Route::get('item/manage', 'DepositController@manage');
-   Route::post('item/save', 'DepositController@save');
-   Route::get('item/edit/{id}', 'DepositController@edit');
-   Route::post('item/update', 'DepositController@update');
-   Route::post('item/inactive','DepositController@inactive');
-   Route::post('item/active','DepositController@active');
-   Route::post('item/delete','DepositController@destroy');
+   // Product Controller 
+   Route::get('product/add', 'ProductController@add');
+   Route::get('product/manage', 'ProductController@manage');
+   Route::post('product/save', 'ProductController@save');
+   Route::get('product/edit/{id}', 'ProductController@edit');
+   Route::post('product/update', 'ProductController@update');
+   Route::post('product/inactive','ProductController@inactive');
+   Route::post('product/active','ProductController@active');
+   Route::post('product/delete','ProductController@destroy');
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){

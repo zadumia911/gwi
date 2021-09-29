@@ -267,15 +267,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/item/add')}}" class="nav-link">
+                <a href="{{url('editor/product/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Item</p>
+                  <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/item/manage')}}" class="nav-link">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Item</p>
+                  <p>Manage Product</p>
                 </a>
               </li>
             </ul>
