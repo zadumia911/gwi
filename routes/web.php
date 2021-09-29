@@ -60,7 +60,19 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('salary/update', 'SalaryController@update');
    Route::post('salary/inactive','SalaryController@inactive');
    Route::post('salary/active','SalaryController@active');
-   Route::post('salary/delete','SalaryController@destroy');
+   Route::post('salary/delete','SalaryController@destroy');  
+
+    // Employee payment 
+   Route::get('employee-payment/add', 'EmployeepaymentController@add');
+   Route::get('employee-payment/manage', 'EmployeepaymentController@manage');
+   Route::post('employee-payment/save', 'EmployeepaymentController@save');
+   Route::get('employee-payment/edit/{id}', 'EmployeepaymentController@edit');
+   Route::post('employee-payment/update', 'EmployeepaymentController@update');
+   Route::post('employee-payment/inactive','EmployeepaymentController@inactive');
+   Route::post('employee-payment/active','EmployeepaymentController@active');
+   Route::post('employee-payment/delete','EmployeepaymentController@destroy');
+
+
 });
 
 Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middleware'=>['auth', 'editor']], function(){
