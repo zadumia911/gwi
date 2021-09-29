@@ -185,6 +185,30 @@
             </ul>
           </li>
           <!-- nav-item end -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-university"></i>
+              <p>
+              Bank Ledger
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('admin/bank/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Bank</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/bank/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Bank</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

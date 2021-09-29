@@ -72,6 +72,16 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('employee-payment/active','EmployeepaymentController@active');
    Route::post('employee-payment/delete','EmployeepaymentController@destroy');
 
+   // Bank 
+   Route::get('bank/add', 'BankController@add');
+   Route::get('bank/manage', 'BankController@manage');
+   Route::post('bank/save', 'BankController@save');
+   Route::get('bank/edit/{id}', 'BankController@edit');
+   Route::post('bank/update', 'BankController@update');
+   Route::post('bank/inactive','BankController@inactive');
+   Route::post('bank/active','BankController@active');
+   Route::post('bank/delete','BankController@destroy');  
+
    // Admin reports controller
    Route::get('employee-salary/report','ReportsController@empsalaryreport');
 
