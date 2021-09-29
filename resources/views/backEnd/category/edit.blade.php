@@ -1,17 +1,17 @@
 @extends('backEnd.layouts.master') 
-@section('title','User Edit') 
+@section('title','Category Edit') 
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                <div class="page-title">
-                 <h6>User Update</h6>
+                 <h6>Category Update</h6>
               </div>
             </div>
             <div class="col-sm-6">
                 <div class="short-icon text-right">
-                    <a href="{{url('admin/category/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
+                    <a href="{{url('editor/category/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
 
 <div class="card">
     <!-- form start -->
-    <form action="{{url('/admin/category/update')}}" method="POST" enctype="multipart/form-data" name="editForm">
+    <form action="{{url('/editor/category/update')}}" method="POST" enctype="multipart/form-data" name="editForm">
         <input type="hidden" value="{{$edit_data->id}}" name="hidden_id">
     	@csrf
         <div class="card-body">

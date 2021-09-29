@@ -11,7 +11,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="short-icon text-right">
-                    <a href="{{url('admin/category/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
+                    <a href="{{url('editor/category/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
 
 <div class="card">
     <!-- form start -->
-    <form action="{{url('/admin/category/save')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{url('/editor/category/save')}}" method="POST" enctype="multipart/form-data">
     	@csrf
         <div class="card-body">
             <div class="row">

@@ -12,7 +12,7 @@
         </div>
         <div class="col-sm-6">
           <div class="short-icon text-right">
-            <a href="{{url('admin/category/add')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+            <a href="{{url('editor/category/add')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
           </div>
         </div>
       </div>
@@ -39,23 +39,23 @@
             <td>{{$value->status==1 ? 'Active' : 'Inactive'}}</td>
             <td class="action_button">
               <ul class="manage-btn-group">
-                <li><a href="{{url('admin/category/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
+                <li><a href="{{url('editor/category/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
                 <li>
                 @if($value->status==1)
-                  <form action="{{url('admin/category/inactive')}}" method="POST">
+                  <form action="{{url('editor/category/inactive')}}" method="POST">
                       @csrf
                       <input type="hidden" name="hidden_id" value="{{$value->id}}">
                       <button type="submit" class="btn btn-secondary" title="Inactive" onclick="return confirm('Are you want change this?')"><i class="fa fa-thumbs-down"></i></button>
                   </form>
                 @else
-                 <form action="{{url('admin/category/active')}}" method="POST">
+                 <form action="{{url('editor/category/active')}}" method="POST">
                   @csrf
                    <input type="hidden" name="hidden_id" value="{{$value->id}}">
                    <button type="submit" class="btn btn-success"  onclick="return confirm('Are you want change this?')" title="Active"><i class="fa fa-thumbs-up"></i></button> 
                  </form></li>
                 @endif
                  <li>
-                  <form action="{{url('admin/category/delete')}}" method="POST">
+                  <form action="{{url('editor/category/delete')}}" method="POST">
                     @csrf
                     <input type="hidden" name="hidden_id" value="{{$value->id}}">
                     <button type="submit" onclick="return confirm('Are you delete this user?')" class="btn btn-danger"><i class="fa fa-times"></i></button>

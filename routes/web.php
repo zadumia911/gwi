@@ -123,14 +123,14 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('category/delete','CategoryController@destroy');  
 
    // Brand Controller 
-   Route::get('brand/add', 'WithdrawController@add');
-   Route::get('brand/manage', 'WithdrawController@manage');
-   Route::post('brand/save', 'WithdrawController@save');
-   Route::get('brand/edit/{id}', 'WithdrawController@edit');
-   Route::post('brand/update', 'WithdrawController@update');
-   Route::post('brand/inactive','WithdrawController@inactive');
-   Route::post('brand/active','WithdrawController@active');
-   Route::post('brand/delete','WithdrawController@destroy'); 
+   Route::get('brand/add', 'BrandController@add');
+   Route::get('brand/manage', 'BrandController@manage');
+   Route::post('brand/save', 'BrandController@save');
+   Route::get('brand/edit/{id}', 'BrandController@edit');
+   Route::post('brand/update', 'BrandController@update');
+   Route::post('brand/inactive','BrandController@inactive');
+   Route::post('brand/active','BrandController@active');
+   Route::post('brand/delete','BrandController@destroy'); 
 
    // Item Controller 
    Route::get('item/add', 'DepositController@add');
