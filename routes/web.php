@@ -161,6 +161,36 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('localcosthead/inactive','LocalCostHeadController@inactive');
    Route::post('localcosthead/active','LocalCostHeadController@active');
    Route::post('localcosthead/delete','LocalCostHeadController@destroy');
+
+   // Local Cost Controller 
+   Route::get('localcost/add', 'LocalCostController@add');
+   Route::get('localcost/manage', 'LocalCostController@manage');
+   Route::post('localcost/save', 'LocalCostController@save');
+   Route::get('localcost/edit/{id}', 'LocalCostController@edit');
+   Route::post('localcost/update', 'LocalCostController@update');
+   Route::post('localcost/inactive','LocalCostController@inactive');
+   Route::post('localcost/active','LocalCostController@active');
+   Route::post('localcost/delete','LocalCostController@destroy');
+
+   // Supplier Controller 
+   Route::get('supplier/add', 'SupplierController@add');
+   Route::get('supplier/manage', 'SupplierController@manage');
+   Route::post('supplier/save', 'SupplierController@save');
+   Route::get('supplier/edit/{id}', 'SupplierController@edit');
+   Route::post('supplier/update', 'SupplierController@update');
+   Route::post('supplier/inactive','SupplierController@inactive');
+   Route::post('supplier/active','SupplierController@active');
+   Route::post('supplier/delete','SupplierController@destroy');
+
+   // Customer Controller 
+   Route::get('customer/add', 'CustomerController@add');
+   Route::get('customer/manage', 'CustomerController@manage');
+   Route::post('customer/save', 'CustomerController@save');
+   Route::get('customer/edit/{id}', 'CustomerController@edit');
+   Route::post('customer/update', 'CustomerController@update');
+   Route::post('customer/inactive','CustomerController@inactive');
+   Route::post('customer/active','CustomerController@active');
+   Route::post('customer/delete','CustomerController@destroy');
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){

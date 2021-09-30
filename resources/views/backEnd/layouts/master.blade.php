@@ -315,13 +315,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/product/add')}}" class="nav-link">
+                <a href="{{url('editor/localcost/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Local Cost</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                <a href="{{url('editor/localcost/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Local Cost</p>
                 </a>
@@ -348,6 +348,114 @@
                 <a href="{{url('editor/product/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Import Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa-cart-plus fas"></i>
+              <p>
+                Purchase & Supplier
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/supplier/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Supplier</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/supplier/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Supplier</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Purchase</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Purchase</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcost/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Purchase Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcost/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Supplier Ledger</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Supplier Due List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-gift"></i>
+              <p>
+                Sale & Customer
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/customer/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sale</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Sale</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcost/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sale Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcost/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Customer Ledger</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Customer Due List</p>
                 </a>
               </li>
             </ul>
