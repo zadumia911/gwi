@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="barcode">Barcode</label>
+                        <label for="barcode">Barcode <span>*</span></label>
                         <input type="number"  class="form-control {{ $errors->has('barcode') ? ' is-invalid' : '' }}" id="barcode" value="{{old('barcode')}}" name="barcode" maxlength="20" />
                         @if ($errors->has('barcode'))
                         <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="pro_name">Product Name </label>
+                        <label for="pro_name">Product Name <span>*</span></label>
                         <input type="text" class="form-control {{ $errors->has('pro_name') ? ' is-invalid' : '' }}" id="pro_name" value="{{old('pro_name')}}" name="pro_name" />
 						@if ($errors->has('pro_name'))
 						<span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="pack_size">Pack Size</label>
+                        <label for="pack_size">Pack Size <span>*</span></label>
                         <input type="text"  class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" />
                         @if ($errors->has('pack_size'))
                         <span class="invalid-feedback" role="alert">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group clearfix">
-                     <label for="" class="d-block">Product Status</label>
+                     <label for="" class="d-block">Product Status <span>*</span></label>
                       <div class="icheck-primary d-inline">
                         <input type="radio" id="active" value="1" name="status" checked>
                         <label for="active">

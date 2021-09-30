@@ -29,7 +29,7 @@
                 <input type="hidden" value="{{$edit_data->id}}" name="hidden_id">
                 <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Head Name</label>
+                      <label>Head Name <span>*</span></label>
                       <input type="text" name="local_cost_head" class="form-control{{ $errors->has('local_cost_head') ? ' is-invalid' : '' }}" value="{{$edit_data->local_cost_head}}">
 
                       @if ($errors->has('local_cost_head'))
@@ -43,7 +43,7 @@
 
                 <div class="col-md-6">
                     <div class="form-group clearfix">
-                     <label for="" class="d-block">Published Status</label>
+                     <label for="" class="d-block">Published Status <span>*</span></label>
                       <div class="icheck-primary d-inline">
                         <input type="radio" id="active" value="1" name="status" checked>
                         <label for="active">

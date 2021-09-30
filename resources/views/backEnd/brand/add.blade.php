@@ -28,7 +28,7 @@
                 <!-- Brand name -->
                 <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Brand Name</label>
+                      <label>Brand Name <span>*</span></label>
                       <input type="text" name="brand_name" class="form-control{{ $errors->has('brand_name') ? ' is-invalid' : '' }}" value="{{ old('brand_name') }}">
 
                       @if ($errors->has('brand_name'))
@@ -41,7 +41,7 @@
                 <!-- status -->
                 <div class="col-md-6">
                     <div class="form-group clearfix">
-                     <label for="" class="d-block">Published Status</label>
+                     <label for="" class="d-block">Published Status <span>*</span></label>
                       <div class="icheck-primary d-inline">
                         <input type="radio" id="active" value="1" name="status" checked>
                         <label for="active">
