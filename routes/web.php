@@ -151,6 +151,16 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('cnf/inactive','CFController@inactive');
    Route::post('cnf/active','CFController@active');
    Route::post('cnf/delete','CFController@destroy');
+
+   // Local Cost Head Controller 
+   Route::get('localcosthead/add', 'LocalCostHeadController@add');
+   Route::get('localcosthead/manage', 'LocalCostHeadController@manage');
+   Route::post('localcosthead/save', 'LocalCostHeadController@save');
+   Route::get('localcosthead/edit/{id}', 'LocalCostHeadController@edit');
+   Route::post('localcosthead/update', 'LocalCostHeadController@update');
+   Route::post('localcosthead/inactive','LocalCostHeadController@inactive');
+   Route::post('localcosthead/active','LocalCostHeadController@active');
+   Route::post('localcosthead/delete','LocalCostHeadController@destroy');
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){

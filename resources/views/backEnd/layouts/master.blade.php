@@ -303,13 +303,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/brand/add')}}" class="nav-link">
+                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Local Cost Head</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/brand/manage')}}" class="nav-link">
+                <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Head</p>
                 </a>
