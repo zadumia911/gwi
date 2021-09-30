@@ -141,6 +141,16 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('product/inactive','ProductController@inactive');
    Route::post('product/active','ProductController@active');
    Route::post('product/delete','ProductController@destroy');
+
+   // C & F Controller 
+   Route::get('cnf/add', 'CFController@add');
+   Route::get('cnf/manage', 'CFController@manage');
+   Route::post('cnf/save', 'CFController@save');
+   Route::get('cnf/edit/{id}', 'CFController@edit');
+   Route::post('cnf/update', 'CFController@update');
+   Route::post('cnf/inactive','CFController@inactive');
+   Route::post('cnf/active','CFController@active');
+   Route::post('cnf/delete','CFController@destroy');
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){

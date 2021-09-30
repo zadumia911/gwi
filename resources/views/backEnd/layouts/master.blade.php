@@ -280,6 +280,78 @@
               </li>
             </ul>
           </li>
+          <!-- nav-item end -->         
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-product-hunt"></i>
+              <p>
+                Import
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/cnf/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add C & F</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/cnf/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage C & F</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/brand/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Local Cost Head</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/brand/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Head</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Local Cost</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Local Cost</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Local Cost Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Import</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Import</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/product/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Import Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <!-- nav-item end -->
         </ul>
       </nav>
