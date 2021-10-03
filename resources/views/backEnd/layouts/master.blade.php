@@ -460,6 +460,42 @@
               </li>
             </ul>
           </li>
+          <!-- nav-item end -->       
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+              <p>
+                Expense Entry
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/expensehead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Head</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/expensehead/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Head</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daily Expense</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Daily Expense</p>
+                </a>
+              </li>              
+            </ul>
+          </li>
           <!-- nav-item end -->
         </ul>
       </nav>

@@ -191,6 +191,16 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('customer/inactive','CustomerController@inactive');
    Route::post('customer/active','CustomerController@active');
    Route::post('customer/delete','CustomerController@destroy');
+
+   // Expense Head Controller 
+   Route::get('expensehead/add', 'ExpenseHeadController@add');
+   Route::get('expensehead/manage', 'ExpenseHeadController@manage');
+   Route::post('expensehead/save', 'ExpenseHeadController@save');
+   Route::get('expensehead/edit/{id}', 'ExpenseHeadController@edit');
+   Route::post('expensehead/update', 'ExpenseHeadController@update');
+   Route::post('expensehead/inactive','ExpenseHeadController@inactive');
+   Route::post('expensehead/active','ExpenseHeadController@active');
+   Route::post('expensehead/delete','ExpenseHeadController@destroy');
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){
