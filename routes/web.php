@@ -201,6 +201,26 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('expensehead/inactive','ExpenseHeadController@inactive');
    Route::post('expensehead/active','ExpenseHeadController@active');
    Route::post('expensehead/delete','ExpenseHeadController@destroy');
+
+   // Daily Expense Controller 
+   Route::get('dailyexpense/add', 'DailyExpenseController@add');
+   Route::get('dailyexpense/manage', 'DailyExpenseController@manage');
+   Route::post('dailyexpense/save', 'DailyExpenseController@save');
+   Route::get('dailyexpense/edit/{id}', 'DailyExpenseController@edit');
+   Route::post('dailyexpense/update', 'DailyExpenseController@update');
+   Route::post('dailyexpense/inactive','DailyExpenseController@inactive');
+   Route::post('dailyexpense/active','DailyExpenseController@active');
+   Route::post('dailyexpense/delete','DailyExpenseController@destroy');
+
+
+
+
+
+
+
+
+
+   
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){

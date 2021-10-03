@@ -483,13 +483,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                <a href="{{url('editor/dailyexpense/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Daily Expense</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
+                <a href="{{url('editor/dailyexpense/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Daily Expense</p>
                 </a>
