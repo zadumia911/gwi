@@ -1,5 +1,5 @@
 @extends('backEnd.layouts.master')
-@section('title','Employee Manage')
+@section('title','Product Manage')
 @section('content')
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="page-title">
-            <h6>Employee Manage</h6>
+            <h6>Product Manage</h6>
           </div>
         </div>
         <div class="col-sm-6">
