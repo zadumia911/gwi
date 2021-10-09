@@ -244,3 +244,40 @@ a.nav-link.active {
     height: 39px;
     right: 6px;
 }
+body:not(.layout-fixed) .main-sidebar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    overflow: auto;
+}
+
+.dash-category-title {
+    display: block;
+    background-color: #dddddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.dash-category-title h3 {
+    margin: 0;
+    color: #f4f6f9;
+    font-size: 20px;
+    position: relative;
+    background-color: #3f4a59;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px 0px 0 3px;
+}
+.dash-category-title h3::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: 100%;
+    top: 0px;
+    border-left: 15px solid #3f4a59;
+    border-right: 15px solid transparent;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+}
+.small-box p {
+    font-size: 1.3rem;
+}
