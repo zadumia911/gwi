@@ -195,8 +195,7 @@
         
     </form>
     <form action="">
-        <div class="card-body">
-            
+        <div class="card-body">            
             <div class="row">
                 <div class="col-sm-12">
                     <h3 class="my-4 text-center">Head Cost Entry</h3>
@@ -241,8 +240,7 @@
         </div>
     </form>
     <form action="">
-        <div class="card-body">
-            
+        <div class="card-body">            
             <div class="row">
                 <div class="col-sm-12">
                     <div>
