@@ -1,5 +1,5 @@
 @extends('backEnd.layouts.master')
-@section('title','Product Manage')
+@section('title','Import Manage')
 @section('content')
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -7,12 +7,12 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="page-title">
-            <h6>Product Manage</h6>
+            <h6>Import Manage</h6>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="short-icon text-right">
-            <a href="{{url('editor/product/add')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+            <a href="{{url('editor/import/add')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
           </div>
         </div>
       </div>
@@ -26,11 +26,12 @@
         <thead>
           <tr>
             <th>SL</th>
-            <th>Barcode</th>
-            <th>Item Name</th>
-            <th>Category Name</th>
-            <th>Brand Name</th>
-            <th>Pack Size</th>
+            <th>Date</th>
+            <th>LC Number</th>
+            <th>PO</th>
+            <th>Local Cost</th>
+            <th>USD Rate</th>
+            <th>SGD Rate</th>
             <th>Status</th>
             <th class="action_button">Action</th>
           </tr>
@@ -47,22 +48,22 @@
             <td>{{$value->status ==1 ? 'Active' : 'Inactive'}}</td>
             <td class="action_button">
               <ul class="manage-btn-group">
-                <li><a href="{{url('editor/product/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
+                <li><a href="{{url('editor/import/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
                 <li>@if($value->status==1)
-                  <form action="{{url('editor/product/inactive')}}" method="POST">
+                  <form action="{{url('editor/import/inactive')}}" method="POST">
                       @csrf
                       <input type="hidden" name="hidden_id" value="{{$value->id}}">
                       <button type="submit" class="btn btn-secondary" title="Inactive" onclick="return confirm('Are you want change this?')"><i class="fa fa-thumbs-down"></i></button>
                   </form>
                 @else
-                <form action="{{url('editor/product/active')}}" method="POST">
+                <form action="{{url('editor/import/active')}}" method="POST">
                   @csrf
                   <input type="hidden" name="hidden_id" value="{{$value->id}}">
                   <button type="submit" class="btn btn-success"  onclick="return confirm('Are you want change this?')" title="Active"><i class="fa fa-thumbs-up"></i></button> 
                 </form></li>
                 @endif
                  <li>
-                  <form action="{{url('editor/product/delete')}}" method="POST">
+                  <form action="{{url('editor/import/delete')}}" method="POST">
                     @csrf
                     <input type="hidden" name="hidden_id" value="{{$value->id}}">
                     <button type="submit" onclick="return confirm('Are you delete this user?')" class="btn btn-danger"><i class="fa fa-times"></i></button>

@@ -333,7 +333,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('editor/import/manage')}}" class="nav-link">
+                <a href="{{url('editor/import/add')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Import</p>
                 </a>

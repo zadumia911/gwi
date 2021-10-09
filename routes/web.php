@@ -172,6 +172,16 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('localcost/active','LocalCostController@active');
    Route::post('localcost/delete','LocalCostController@destroy');
 
+   // Import Controller 
+   Route::get('import/add', 'ImportController@add');
+   Route::get('import/manage', 'ImportController@manage');
+   Route::post('import/save', 'ImportController@save');
+   Route::get('import/edit/{id}', 'ImportController@edit');
+   Route::post('import/update', 'ImportController@update');
+   Route::post('import/inactive','ImportController@inactive');
+   Route::post('import/active','ImportController@active');
+   Route::post('import/delete','ImportController@destroy');
+
    // Supplier Controller 
    Route::get('supplier/add', 'SupplierController@add');
    Route::get('supplier/manage', 'SupplierController@manage');
