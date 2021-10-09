@@ -406,7 +406,7 @@
               </li>
             </ul>
           </li>
-          <!-- nav-item end -->        
+          <!-- nav-item end -->      
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-gift"></i>
@@ -463,6 +463,90 @@
           <!-- nav-item end -->       
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-gift"></i>
+              <p>
+                Customer Collection
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/customer/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Collection</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Collection</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Collection Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-paypal fab nav-icon"></i>
+              <p>
+                Supplier Payment
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/customer/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Payment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Payment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Payment Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-file nav-icon"></i>
+              <p>
+                Stock Ledger
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/customer/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Wise Stock Ledger</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- nav-item end -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
                 Expense Entry
@@ -492,6 +576,54 @@
                 <a href="{{url('editor/dailyexpense/manage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Daily Expense</p>
+                </a>
+              </li>              
+            </ul>
+          </li>
+          <!-- nav-item end -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+              <p>
+                Account Reports
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/expensehead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Expense Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/expensehead/manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Income Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('editor/dailyexpense/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bank Statement</p>
+                </a>
+              </li>             
+            </ul>
+          </li>
+          <!-- nav-item end -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+              <p>
+                Cash Book
+                <i class="fas fa-caret-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('editor/expensehead/add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cash Book</p>
                 </a>
               </li>              
             </ul>
