@@ -281,3 +281,8 @@ body:not(.layout-fixed) .main-sidebar {
 .small-box p {
     font-size: 1.3rem;
 }
+.nav-sidebar .nav-link>.right, .nav-sidebar .nav-link > p > .right {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
