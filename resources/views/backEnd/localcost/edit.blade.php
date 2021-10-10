@@ -1,17 +1,17 @@
 @extends('backEnd.layouts.master') 
-@section('title','Product Edit') 
+@section('title','Local Cost Edit') 
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                <div class="page-title">
-                 <h6>Product Update</h6>
+                 <h6>Local Cost Update</h6>
               </div>
             </div>
             <div class="col-sm-6">
                 <div class="short-icon text-right">
-                    <a href="{{url('editor/product/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
+                    <a href="{{url('editor/localcost/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
                 </div>
             </div>
         </div>
@@ -21,30 +21,34 @@
 
 <div class="card">
     <!-- form start -->
-    <form action="{{url('/editor/product/update')}}" method="POST" enctype="multipart/form-data" name="editForm">
+    <form action="{{url('/editor/localcost/update')}}" method="POST" enctype="multipart/form-data" name="editForm">
         <input type="hidden" value="{{$edit_data->id}}" name="hidden_id">
     	@csrf
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="barcode">Barcode <span>*</span></label>
-                        <input type="number"  class="form-control {{ $errors->has('barcode') ? ' is-invalid' : '' }}" id="barcode" value="{{$edit_data->barcode}}" name="barcode" maxlength="20" />
-                        @if ($errors->has('barcode'))
+                        <label for="join_date">Receiving Date</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="text" name="join_date" class="form-control myDate" />
+                        </div>
+                        @if ($errors->has('join_date'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('barcode') }}</strong>
+                            <strong>{{ $errors->first('join_date') }}</strong>
                         </span>
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="category_id">Category Name <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{$edit_data->category_id}}" required>
-                            <option>Select..</option>
-                            @foreach($category as $key=>$value)
-                            <option value="{{$value->id}}">{{$value->category_name}}</option>
-                            @endforeach
+                        <label for="category_id">Type <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
+                            <option value=""></option>
+                            <option value="1">Local</option>
+                            <option value="2">Foreign</option>
                         </select>
                         @if ($errors->has('category_id'))
                         <span class="invalid-feedback" role="alert">
@@ -53,14 +57,12 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="brand_id">Brand Name <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('brand_id') ? ' is-invalid' : '' }}" name="brand_id" value="{{$edit_data->brand_id}}" required>
-                            <option>Select..</option>
-                            @foreach($brand as $key=>$value)
-                            <option value="{{$value->id}}">{{$value->brand_name}}</option>
-                            @endforeach
+                        <label for="brand_id">Exporter Name <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('brand_id') ? ' is-invalid' : '' }}" name="brand_id" value="{{ old('brand_id') }}" required>
+                            <option value=""></option>
+                            <option value=""></option>
                         </select>
                         @if ($errors->has('brand_id'))
                         <span class="invalid-feedback" role="alert">
@@ -69,10 +71,24 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="pro_name">Product Name <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('pro_name') ? ' is-invalid' : '' }}" id="pro_name" value="{{$edit_data->pro_name}}" name="pro_name" />
+                        <label for="brand_id">C & F Agent Name <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('brand_id') ? ' is-invalid' : '' }}" name="brand_id" value="{{ old('brand_id') }}" required>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                        @if ($errors->has('brand_id'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('brand_id') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pro_name">Shipping Port<span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pro_name') ? ' is-invalid' : '' }}" id="pro_name" value="{{old('pro_name')}}" name="pro_name" placeholder="Enter Shipping Port" />
                         @if ($errors->has('pro_name'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pro_name') }}</strong>
@@ -80,10 +96,27 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="pack_size">Pack Size <span>*</span></label>
-                        <input type="text"  class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{$edit_data->pack_size}}" name="pack_size" />
+                        <label for="brand_id">Destination <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('brand_id') ? ' is-invalid' : '' }}" name="brand_id" value="{{ old('brand_id') }}" required>
+                            <option value=""></option>
+                            <option value="1">Chittagong Port</option>
+                            <option value="2">Kamalapore Port</option>
+                            <option value="3">Pangaon Port</option>
+                            <option value="4">Mongala Port</option>
+                        </select>
+                        @if ($errors->has('brand_id'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('brand_id') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">LC Number <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="LC Number" />
                         @if ($errors->has('pack_size'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pack_size') }}</strong>
@@ -91,29 +124,150 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group clearfix">
-                     <label for="" class="d-block">Product Status <span>*</span></label>
-                      <div class="icheck-primary d-inline">
-                        <input type="radio" id="active" value="1" name="status" checked>
-                        <label for="active">
-                            Active
-                        </label>
-                      </div>
-                      <div class="icheck-primary d-inline">
-                        <input type="radio" id="inactive" value="0" name="status">
-                        <label for="inactive">
-                            Inactive
-                        </label>
-                      </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">LC Opening Date <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="LC Date" />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">LC Amount (USD) <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="LC Amount (USD)" />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="brand_id">Bank Name <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('brand_id') ? ' is-invalid' : '' }}" name="brand_id" value="{{ old('brand_id') }}" required>
+                            <option value=""></option>
+                        </select>
+                        @if ($errors->has('brand_id'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('brand_id') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">Container Receiver <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="Container Received by" />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">Purchase Order <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="Purchase Order No..." />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">Supplier Invoice <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="Supplier Invoice No..." />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-            <button type="submit" class="btn btn-success">Submit</button>
-            <button type="reset" class="btn btn-default">Clear</button>
+        
+    </form>
+    <form action="">
+        <div class="card-body">            
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="my-4 text-center">Head Cost Entry</h3>
+                </div>
+                <!-- input -->
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="brand_id">Head Name <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('brand_id') ? ' is-invalid' : '' }}" name="brand_id" value="{{ old('brand_id') }}" required>
+                            <option value=""></option>
+                        </select>
+                        @if ($errors->has('brand_id'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('brand_id') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">Amount<span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="0.00" />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="pack_size">Comment<span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="Enter Comment" />
+                        @if ($errors->has('pack_size'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pack_size') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form action="">
+        <div class="card-body">            
+            <div class="row">
+                <div class="col-sm-12">
+                    <div>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>*</th>
+                                    <th>Head Name</th>
+                                    <th>Amount</th>
+                                    <th>Comment</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-default">Clear</button>
+            </div>
         </div>
     </form>
 </div>
