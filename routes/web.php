@@ -156,10 +156,6 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::get('localcosthead/add', 'LocalCostHeadController@add');
    Route::get('localcosthead/manage', 'LocalCostHeadController@manage');
    Route::post('localcosthead/save', 'LocalCostHeadController@save');
-   Route::get('localcosthead/edit/{id}', 'LocalCostHeadController@edit');
-   Route::post('localcosthead/update', 'LocalCostHeadController@update');
-   Route::post('localcosthead/inactive','LocalCostHeadController@inactive');
-   Route::post('localcosthead/active','LocalCostHeadController@active');
    Route::post('localcosthead/delete','LocalCostHeadController@destroy');
 
    // Local Cost Controller 
@@ -181,6 +177,7 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('supplier/inactive','SupplierController@inactive');
    Route::post('supplier/active','SupplierController@active');
    Route::post('supplier/delete','SupplierController@destroy');
+   Route::get('supplier/find','SupplierController@supplierfind');
 
    // Customer Controller 
    Route::get('customer/add', 'CustomerController@add');

@@ -5,10 +5,17 @@ namespace App\Http\Controllers\editor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Supplier;
+use DB;
 use Toastr;
 
 class SupplierController extends Controller
 {    
+    public function supplierfind(Request $request){
+        $supplier = DB::table("suppliers")
+        ->where("supplier_type",$request->supplier_type)
+        ->pluck('supplier_name','id');
+        return response()->json($supplier);
+    }
     public function add(){
         return view('backEnd.supplier.add');
     }
@@ -53,9 +60,9 @@ class SupplierController extends Controller
             'supplier_email'=>'required',
             'supplier_web'=>'required',
             'supplier_balance'=>'required',
-            'supplier_date'=>'required',
             'status'=>'required',
         ]);
+
         $update_data                     =   Supplier::find($request->hidden_id);
         $update_data->supplier_type      =   $request->supplier_type;
         $update_data->supplier_name      =   $request->supplier_name;
