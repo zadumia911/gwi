@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label for="category_id">PO Number <span>*</span></label>
                         <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
-                            <option value=""></option>
+                            <option value="">Select PO No</option>
                         </select>
                         @if ($errors->has('category_id'))
                         <span class="invalid-feedback" role="alert">

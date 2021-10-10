@@ -192,6 +192,16 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('supplier/active','SupplierController@active');
    Route::post('supplier/delete','SupplierController@destroy');
 
+   // Purchase Controller 
+   Route::get('purchase/add', 'PurchaseController@add');
+   Route::get('purchase/manage', 'PurchaseController@manage');
+   Route::post('purchase/save', 'PurchaseController@save');
+   Route::get('purchase/edit/{id}', 'PurchaseController@edit');
+   Route::post('purchase/update', 'PurchaseController@update');
+   Route::post('purchase/inactive','PurchaseController@inactive');
+   Route::post('purchase/active','PurchaseController@active');
+   Route::post('purchase/delete','PurchaseController@destroy');
+
    // Customer Controller 
    Route::get('customer/add', 'CustomerController@add');
    Route::get('customer/manage', 'CustomerController@manage');
