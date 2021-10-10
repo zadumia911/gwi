@@ -155,6 +155,7 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    // Local Cost Head Controller 
    Route::get('localcosthead/add', 'LocalCostHeadController@add');
    Route::get('localcosthead/manage', 'LocalCostHeadController@manage');
+   Route::get('localcosthead/report', 'LocalCostHeadController@report');
    Route::post('localcosthead/save', 'LocalCostHeadController@save');
    Route::post('localcosthead/delete','LocalCostHeadController@destroy');
 

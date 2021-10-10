@@ -63,7 +63,10 @@ class LocalCostController extends Controller
         $show_datas = LocalCost::latest()->get();
         return view('backEnd.localcost.manage',compact('show_datas'));
     }
-
+    public function report(){
+        $show_datas = LocalCost::latest()->get();
+        return view('backEnd.localcost.report',compact('show_datas'));
+    }
     public function destroy(Request $request){
         $destroy_id = LocalCost::find($request->hidden_id);
         $destroy_id->delete();
