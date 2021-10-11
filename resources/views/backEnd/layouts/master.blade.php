@@ -424,13 +424,13 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                    <a href="{{url('editor/sale/add')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Sale</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
+                    <a href="{{url('editor/sale/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Sale</p>
                     </a>
@@ -496,13 +496,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/add')}}" class="nav-link">
+                    <a href="{{url('editor/payment/add')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Payment</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                    <a href="{{url('editor/payment/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Payment</p>
                     </a>

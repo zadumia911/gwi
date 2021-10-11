@@ -212,6 +212,26 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('customer/active','CustomerController@active');
    Route::post('customer/delete','CustomerController@destroy');
 
+   // Sale Controller 
+   Route::get('sale/add', 'SaleController@add');
+   Route::get('sale/manage', 'SaleController@manage');
+   Route::post('sale/save', 'SaleController@save');
+   Route::get('sale/edit/{id}', 'SaleController@edit');
+   Route::post('sale/update', 'SaleController@update');
+   Route::post('sale/inactive','SaleController@inactive');
+   Route::post('sale/active','SaleController@active');
+   Route::post('sale/delete','SaleController@destroy');
+
+   // Payment Controller 
+   Route::get('payment/add', 'PaymentController@add');
+   Route::get('payment/manage', 'PaymentController@manage');
+   Route::post('payment/save', 'PaymentController@save');
+   Route::get('payment/edit/{id}', 'PaymentController@edit');
+   Route::post('payment/update', 'PaymentController@update');
+   Route::post('payment/inactive','PaymentController@inactive');
+   Route::post('payment/active','PaymentController@active');
+   Route::post('payment/delete','PaymentController@destroy');
+
    // Expense Head Controller 
    Route::get('expensehead/add', 'ExpenseHeadController@add');
    Route::get('expensehead/manage', 'ExpenseHeadController@manage');
