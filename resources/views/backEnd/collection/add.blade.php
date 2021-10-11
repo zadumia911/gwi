@@ -1,17 +1,17 @@
 @extends('backEnd.layouts.master') 
-@section('title','Payment Add') 
+@section('title','Collection Add') 
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                <div class="page-title">
-                    <h6>Payment Add</h6>
+                    <h6>Collection Add</h6>
               </div>
             </div>
             <div class="col-sm-6">
                 <div class="short-icon text-right">
-                    <a href="{{url('editor/payment/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
+                    <a href="{{url('editor/collection/manage')}}" class="btn btn-primary"><i class="fa fa-eye"></i> Manage</a>
                 </div>
             </div>
         </div>
@@ -19,24 +19,13 @@
 </section>
 <div class="card">
     <!-- form start -->
-    <form action="{{url('/editor/payment/save')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{url('/editor/collection/save')}}" method="POST" enctype="multipart/form-data">
     	@csrf
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="customer_name">Voucher Number <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('customer_name') ? ' is-invalid' : '' }}" id="customer_name" name="customer_name" placeholder="Enter Payment Name ...." value="{{ old('customer_name') }}" required/>
-                        @if ($errors->has('customer_name'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('customer_name') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="employee_id">Supplier Name <span>*</span></label>
+                        <label for="employee_id">Customer Name <span>*</span></label>
                         <select class="form-control select2 {{ $errors->has('employee_id') ? ' is-invalid' : '' }}" name="employee_id" value="{{ old('employee_id') }}" required>
                             <option value="">Select Supplier</option>
                         </select>
@@ -47,7 +36,18 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="customer_name">Previous Due <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('customer_name') ? ' is-invalid' : '' }}" id="customer_name" name="customer_name" placeholder="0.00" value="{{ old('customer_name') }}" readonly required/>
+                        @if ($errors->has('customer_name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('customer_name') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="employee_id">Payment Method <span>*</span></label>
                         <select class="form-control select2 {{ $errors->has('employee_id') ? ' is-invalid' : '' }}" name="employee_id" value="{{ old('employee_id') }}" required>
@@ -61,7 +61,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="employee_id">Bank Name <span>*</span></label>
                         <select class="form-control select2 {{ $errors->has('employee_id') ? ' is-invalid' : '' }}" name="employee_id" value="{{ old('employee_id') }}" required>
@@ -74,10 +74,10 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="customer_name">Check Number <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('customer_name') ? ' is-invalid' : '' }}" id="customer_name" name="customer_name" placeholder="Enter Payment Name ...." value="{{ old('customer_name') }}" required/>
+                        <label for="customer_name">Bank Amount <span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('customer_name') ? ' is-invalid' : '' }}" id="customer_name" name="customer_name" placeholder="0.00" value="{{ old('customer_name') }}" required/>
                         @if ($errors->has('customer_name'))
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $errors->first('customer_name') }}</strong>
@@ -85,10 +85,10 @@
 						@endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="customer_address">Check Amount </label>
-                        <input type="text" class="form-control {{ $errors->has('customer_address') ? ' is-invalid' : '' }}" id="customer_address" value="{{ old('customer_address') }}" name="customer_address" />
+                        <label for="customer_address">Check Number </label>
+                        <input type="text" class="form-control {{ $errors->has('customer_address') ? ' is-invalid' : '' }}" id="customer_address" value="{{ old('customer_address') }}" name="customer_address" placeholder="XXXXX" />
 						@if ($errors->has('customer_address'))
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $errors->first('customer_address') }}</strong>
@@ -96,7 +96,18 @@
 						@endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="customer_address">Check Amount </label>
+                        <input type="text" class="form-control {{ $errors->has('customer_address') ? ' is-invalid' : '' }}" id="customer_address" value="{{ old('customer_address') }}" name="customer_address" placeholder="0.00" />
+                        @if ($errors->has('customer_address'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('customer_address') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="join_date">Approve Date</label>
                            <div class="input-group">
@@ -112,10 +123,10 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="customer_phone">Cash Paid</label>
-                        <input type="text"  class="form-control {{ $errors->has('customer_phone') ? ' is-invalid' : '' }}" id="customer_phone" value="{{old('customer_phone')}}" name="customer_phone" />
+                        <input type="text"  class="form-control {{ $errors->has('customer_phone') ? ' is-invalid' : '' }}" id="customer_phone" value="{{old('customer_phone')}}" name="customer_phone" placeholder="Enter Amount" />
                         @if ($errors->has('customer_phone'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('customer_phone') }}</strong>
@@ -123,10 +134,10 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="customer_email">Balance</label>
-                        <input type="email"  class="form-control {{ $errors->has('customer_email') ? ' is-invalid' : '' }}" id="customer_email" value="{{old('customer_email')}}" name="customer_email" />
+                        <input type="email"  class="form-control {{ $errors->has('customer_email') ? ' is-invalid' : '' }}" id="customer_email" value="{{old('customer_email')}}" name="customer_email" placeholder="0.00" readonly />
                         @if ($errors->has('customer_email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('customer_email') }}</strong>
@@ -134,7 +145,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="join_date">Date</label>
                            <div class="input-group">
@@ -150,9 +161,9 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group clearfix">
-                     <label for="" class="d-block">Payment Status</label>
+                     <label for="" class="d-block">Collection Status</label>
                       <div class="icheck-primary d-inline">
                         <input type="radio" id="active" value="1" name="status" checked>
                         <label for="active">

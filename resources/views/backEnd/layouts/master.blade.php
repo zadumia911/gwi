@@ -468,13 +468,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/add')}}" class="nav-link">
+                    <a href="{{url('editor/collection/add')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Collection</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                    <a href="{{url('editor/collection/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Collection</p>
                     </a>

@@ -26,14 +26,17 @@
         <thead>
           <tr>
             <th>SL</th>
-            <th>Supplier Name</th>
-            <th>Invoice Number</th>
+            <th>Customer Name</th>
+            <th>Bill No</th>
             <th>Previous Balance</th>
-            <th>Today Paid</th>
+            <th>Cash Paid</th>
             <th>Cheque Amount</th>
+            <th>Bank Amount</th>
             <th>Balance</th>
             <th>Payment Method</th>
-            <th>Creation Date</th>
+            <th>Bank Name</th>
+            <th>Date</th>
+            <th>Activate</th>
             <th>Status</th>
             <th class="action_button">Action</th>
           </tr>
