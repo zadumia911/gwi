@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $employees = Employee::where('status',1)->latest()->get();
         view()->share(compact('employees'));
+        
     }
 }

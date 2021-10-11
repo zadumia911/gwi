@@ -18,13 +18,15 @@
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
     <!-- DataTables end -->
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css">
+  <!-- jQuery -->
+<script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
+</head>
 
-    <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css" />
-    <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css" />
-    <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/select2/css/select2.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-    <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css" />
-  </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
       <!-- Navbar -->
@@ -647,9 +649,7 @@
       </footer>
     </div>
     <!-- ./wrapper -->
-
     <!-- REQUIRED SCRIPTS -->
-
     <!-- jQuery -->
     <script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -717,9 +717,38 @@
             }
           } else {
             alert("Please upload a valid image file.");
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('.cost_type').on('change',function(){
+        var id = $(this).val();
+        console.log(id);
+         if (id == 1) {
+           $(".hide_input").hide();
+          } else {
+             $(".hide_input").show();
           }
-        });
-      });
-    </script>
-  </body>
+          $.ajax({
+               type:"GET",
+               url:"{{url('editor/supplier/find')}}?supplier_type="+id,
+               success:function(res){               
+                if(res){
+                    $("#supplier").empty();
+                     $("#supplier").append('<option value="0">Select...</option>');
+                    $.each(res,function(key,value){
+                        $("#supplier").append('<option value="'+key+'" class="supplier">'+value+'</option>');
+                    });
+               
+                }else{
+                   $("#supplier").empty();
+                }
+               }
+            });
+       });
+    });
+</script>
+</body>
 </html>

@@ -246,7 +246,7 @@ a.nav-link.active {
 }
 body:not(.layout-fixed) .main-sidebar {
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     overflow: auto;
 }
