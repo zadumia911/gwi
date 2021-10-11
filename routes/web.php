@@ -220,6 +220,16 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('sale/active','SaleController@active');
    Route::post('sale/delete','SaleController@destroy');
 
+   // Customer Collection Controller 
+   Route::get('collection/add', 'CustomerCollectionController@add');
+   Route::get('collection/manage', 'CustomerCollectionController@manage');
+   Route::post('collection/save', 'CustomerCollectionController@save');
+   Route::get('collection/edit/{id}', 'CustomerCollectionController@edit');
+   Route::post('collection/update', 'CustomerCollectionController@update');
+   Route::post('collection/inactive','CustomerCollectionController@inactive');
+   Route::post('collection/active','CustomerCollectionController@active');
+   Route::post('collection/delete','CustomerCollectionController@destroy');
+
    // Payment Controller 
    Route::get('payment/add', 'PaymentController@add');
    Route::get('payment/manage', 'PaymentController@manage');
