@@ -11,17 +11,7 @@ class EmployeeController extends Controller
 {
      public function add(){
         $last_employee = Employee::orderBy('id','DESC')->first();
-        if($last_employee!=null){
-            if($last_employee->id > 10){
-                $code = $last_employee->id + 1;
-                $employee_code = 'E-'.$code;
-            }else{
-               $code = $last_employee->id + 1;
-               $employee_code = 'E-0'.$code;
-            }
-        }else{
-            $employee_code =  'E-01';
-        }
+        $employee_code =  'E-'.str_pad($last_employee->id, 2, '0', STR_PAD_LEFT);
         return view('backEnd.employee.add',compact('employee_code'));
     }
     public function save(Request $request){
@@ -34,17 +24,7 @@ class EmployeeController extends Controller
         ]);
 
         $last_employee = Employee::orderBy('id','DESC')->first();
-        if($last_employee!=null){
-            if($last_employee->id > 10){
-                $code = $last_employee->id + 1;
-                $employee_code = 'E-'.$code;
-            }else{
-               $code = $last_employee->id + 1;
-               $employee_code = 'E-0'.$code;
-            }
-        }else{
-            $employee_code =  'E-01';
-        }
+        $employee_code = 'GW-PO-'.str_pad($last_employee->id, 2, '0', STR_PAD_LEFT);
 
         // image upload
         $file = $request->file('image');

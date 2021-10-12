@@ -5,12 +5,17 @@ namespace App\Http\Controllers\editor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Purchase;
+use App\LocalCost;
+use App\Product;
 use Toastr;
+use DB;
 
 class PurchaseController extends Controller
 {    
     public function add(){
-        return view('backEnd.purchase.add');
+        $localcost = LocalCost::orderBy('id','DESC')->get();
+        $products = Product::orderBy('id','DESC')->get();
+        return view('backEnd.purchase.add',compact('localcost','products'));
     }
     public function save(Request $request){
         $this->validate($request,[
@@ -67,4 +72,5 @@ class PurchaseController extends Controller
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/editor/purchase/ manage');         
     }
+    
 }

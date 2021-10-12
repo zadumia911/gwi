@@ -1,5 +1,5 @@
 @extends('backEnd.layouts.master')
-@section('title','Local Cost Report')
+@section('title','Local Cost Manage')
 @section('content')
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="page-title">
-            <h6>Local Cost Report</h6>
+            <h6>Local Cost Manage</h6>
           </div>
         </div>
         <div class="col-sm-6">
@@ -38,11 +38,14 @@
             <th>Purchase Order</th>
             <th>Supplier Invoice</th>
             <th>Local Cost</th>
-            <th>Status</th>
             <th class="action_button">Action</th>
           </tr>
         </thead>
         <tbody>
+          @php
+            $lcamount = 0;
+            $localcost = 0;
+          @endphp
           @foreach($show_datas as $key=>$value)
           <tr>
             <td>{{$loop->iteration}}</td>
@@ -65,47 +68,20 @@
                   <button type="submit" onclick="return confirm('Are you delete this user?')" class="btn btn-danger"><i class="fa fa-times"></i></button>
                 </form>
               </td>
-            <td>{{$value->barcode}}</td>
-            <td>{{$value->pro_name}}</td>
-            <td>{{$value->category->category_name}}</td>
-            <td>{{$value->brand->brand_name}}</td>
-            <td>{{$value->pack_size}}</td>
-            <td>{{$value->status ==1 ? 'Active' : 'Inactive'}}</td>
-            <td class="action_button">
-              <ul class="manage-btn-group">
-                <li><a href="{{url('editor/localcost/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
-                <li>@if($value->status==1)
-                  <form action="{{url('editor/localcost/inactive')}}" method="POST">
-                      @csrf
-                      <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                      <button type="submit" class="btn btn-secondary" title="Inactive" onclick="return confirm('Are you want change this?')"><i class="fa fa-thumbs-down"></i></button>
-                  </form>
-                @else
-                <form action="{{url('editor/localcost/active')}}" method="POST">
-                  @csrf
-                  <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                  <button type="submit" class="btn btn-success"  onclick="return confirm('Are you want change this?')" title="Active"><i class="fa fa-thumbs-up"></i></button> 
-                </form></li>
-                @endif
-                 <li>
-                  <form action="{{url('editor/localcost/delete')}}" method="POST">
-                    @csrf
-                    <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                    <button type="submit" onclick="return confirm('Are you delete this user?')" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                  </form>
-                </li>
-              </ul>
-          </td>
           </tr>
+          @php
+            $lcamount += $value->lc_amount;
+            $localcost += App\LocalCostDetails::where('cost_id',$value->id)->sum('amount');
+          @endphp
           @endforeach
         </tbody>
-        <tfoot>
+         <tfoot>
           <tr>
             <td>Total</td>
             <td></td>
             <td></td>
             <td></td>
-            <td>5000</td>
+            <td>{{$lcamount}}</td>
             <td></td>
             <td></td>
             <td></td>
@@ -113,8 +89,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
+            <td>{{$localcost}}</td>
             <td></td>
           </tr>
         </tfoot>

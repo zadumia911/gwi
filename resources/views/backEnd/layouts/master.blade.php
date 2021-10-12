@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GWI::@yield('title','Dashboard')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -30,7 +30,7 @@
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
       <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <nav class="main-header hide_pr navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -324,7 +324,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/product/manage')}}" class="nav-link">
+                    <a href="{{url('editor/localcost/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Local Cost Report</p>
                     </a>
@@ -342,7 +342,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/product/manage')}}" class="nav-link">
+                    <a href="{{url('editor/import/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Import Report</p>
                     </a>

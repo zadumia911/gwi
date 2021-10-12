@@ -38,7 +38,6 @@
             <th>Purchase Order</th>
             <th>Supplier Invoice</th>
             <th>Local Cost</th>
-            <th>Status</th>
             <th class="action_button">Action</th>
           </tr>
         </thead>
@@ -57,7 +56,7 @@
             <td>{{$value->destination?$value->destination->destination_name:''}}</td>
             <td>{{$value->gw_po}}</td>
             <td>{{$value->supplier_invoice}}</td>
-            <td>{{App\LocalCostDetails::where('cost_id',$value->id)->sum('amount')}}</td>
+            <td>{{$value->lc_cost}}</td>
              <td> 
               <form action="{{url('editor/localcost/delete')}}" method="POST">
                   @csrf
@@ -65,37 +64,6 @@
                   <button type="submit" onclick="return confirm('Are you delete this user?')" class="btn btn-danger"><i class="fa fa-times"></i></button>
                 </form>
               </td>
-            <td>{{$value->barcode}}</td>
-            <td>{{$value->pro_name}}</td>
-            <td>{{$value->category->category_name}}</td>
-            <td>{{$value->brand->brand_name}}</td>
-            <td>{{$value->pack_size}}</td>
-            <td>{{$value->status ==1 ? 'Active' : 'Inactive'}}</td>
-            <td class="action_button">
-              <ul class="manage-btn-group">
-                <li><a href="{{url('editor/localcost/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
-                <li>@if($value->status==1)
-                  <form action="{{url('editor/localcost/inactive')}}" method="POST">
-                      @csrf
-                      <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                      <button type="submit" class="btn btn-secondary" title="Inactive" onclick="return confirm('Are you want change this?')"><i class="fa fa-thumbs-down"></i></button>
-                  </form>
-                @else
-                <form action="{{url('editor/localcost/active')}}" method="POST">
-                  @csrf
-                  <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                  <button type="submit" class="btn btn-success"  onclick="return confirm('Are you want change this?')" title="Active"><i class="fa fa-thumbs-up"></i></button> 
-                </form></li>
-                @endif
-                 <li>
-                  <form action="{{url('editor/localcost/delete')}}" method="POST">
-                    @csrf
-                    <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                    <button type="submit" onclick="return confirm('Are you delete this user?')" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                  </form>
-                </li>
-              </ul>
-          </td>
           </tr>
           @endforeach
         </tbody>

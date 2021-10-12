@@ -172,7 +172,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="gw_po">GW PO <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('gw_po') ? ' is-invalid' : '' }}" id="gw_po" value="{{old('gw_po')}}" name="gw_po" placeholder="Purchase Order No..." />
+                        <input type="text" class="form-control {{ $errors->has('gw_po') ? ' is-invalid' : '' }}" id="gw_po" value="{{$gw_po}}" name="gw_po" placeholder="Purchase Order No..." readonly />
                         @if ($errors->has('gw_po'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('gw_po') }}</strong>
@@ -194,42 +194,45 @@
             </div>
         </div>
         <!-- /.card-body -->
-            <div class="card">
-                <div class="card-body">
-                    <table class="table table-bordered" id="emptbl">
-                        <thead class="bg-info">
-                            <tr>
-                                <th>Head Name</th>
-                                <th>Amount</th>
-                                <th>Comment</th>
-                            </tr> 
-                        </thead>
-                        <tbody>
-                            <tr> 
-                                <td id="col0">
-                                 <select class="form-control" name="costhead_id[]" value="{{ old('costhead_id') }}" required>
-                                    <option value="">Select..</option>
-                                    @foreach($lcosthead as $key=>$value)
-                                    <option value="{{$value->id}}">{{$value->local_cost_head}}</option>
-                                    @endforeach
-                                </select>
-                                </td>
-                                <td id="col1"><input type="number" class="form-control" placeholder="Amount*" name="amount[]" value="" /></td> 
-                                <td id="col2"><input type="text" class="form-control" placeholder="Comment" name="comment[]" value="" /></td> 
-                            </tr> 
-                        </tbody> 
-                    </table> 
-                     <table class="my-1 float-right"> 
-                        <tbody>
-                            <tr> 
-                                <td><input type="button" class="btn-primary" value="Add" onclick="addRows()" /></td> 
-                                <td><input type="button" class="btn-danger" value="Remove" onclick="deleteRows()" /></td> 
-                            </tr> 
-                        </tbody> 
-                    </table>
-                </div>
-            </div> 
-        
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered" id="emptbl">
+                    <thead class="bg-info">
+                        <tr>
+                            <th>Head Name</th>
+                            <th>Amount</th>
+                            <th>Comment</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            <td id="col0">
+                             <select class="form-control" name="costhead_id[]" value="{{ old('costhead_id') }}" required>
+                                <option value="">Select..</option>
+                                @foreach($lcosthead as $key=>$value)
+                                <option value="{{$value->id}}">{{$value->local_cost_head}}</option>
+                                @endforeach
+                            </select>
+                            </td>
+                            <td id="col1"><input type="number" class="form-control" placeholder="Amount*" name="amount[]" value="" /></td> 
+                            <td id="col2"><input type="text" class="form-control" placeholder="Comment" name="comment[]" value="" /></td> 
+                        </tr> 
+                    </tbody> 
+                </table> 
+                 <table class="my-1 float-right"> 
+                    <tbody>
+                        <tr> 
+                            <td><input type="button" class="btn-primary" value="Add" onclick="addRows()" /></td> 
+                            <td><input type="button" class="btn-danger" value="Remove" onclick="deleteRows()" /></td> 
+                        </tr> 
+                    </tbody> 
+                </table>
+            </div>
+        </div> 
+        <div class="card-footer">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-default">Clear</button>
+            </div>
     </form>
 </div>
 <script type="text/javascript">

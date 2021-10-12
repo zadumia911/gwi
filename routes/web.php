@@ -155,29 +155,30 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    // Local Cost Head Controller 
    Route::get('localcosthead/add', 'LocalCostHeadController@add');
    Route::get('localcosthead/manage', 'LocalCostHeadController@manage');
-   Route::get('localcosthead/report', 'LocalCostHeadController@report');
    Route::post('localcosthead/save', 'LocalCostHeadController@save');
+   Route::get('localcosthead/edit/{id}', 'LocalCostHeadController@edit');
+   Route::post('localcosthead/update', 'LocalCostHeadController@update');
+   Route::post('localcosthead/inactive','LocalCostHeadController@inactive');
+   Route::post('localcosthead/active','LocalCostHeadController@active');
    Route::post('localcosthead/delete','LocalCostHeadController@destroy');
 
    // Local Cost Controller 
    Route::get('localcost/add', 'LocalCostController@add');
    Route::get('localcost/manage', 'LocalCostController@manage');
+   Route::get('localcost/report', 'LocalCostController@report');
    Route::post('localcost/save', 'LocalCostController@save');
-   Route::get('localcost/edit/{id}', 'LocalCostController@edit');
-   Route::post('localcost/update', 'LocalCostController@update');
-   Route::post('localcost/inactive','LocalCostController@inactive');
-   Route::post('localcost/active','LocalCostController@active');
    Route::post('localcost/delete','LocalCostController@destroy');
+   Route::get('lcost-info','LocalCostController@lcost');
+
 
    // Import Controller 
    Route::get('import/add', 'ImportController@add');
    Route::get('import/manage', 'ImportController@manage');
+   Route::get('import/report', 'ImportController@report');
+   Route::get('import/report/{id}', 'ImportController@reportinvoice');
    Route::post('import/save', 'ImportController@save');
-   Route::get('import/edit/{id}', 'ImportController@edit');
-   Route::post('import/update', 'ImportController@update');
-   Route::post('import/inactive','ImportController@inactive');
-   Route::post('import/active','ImportController@active');
    Route::post('import/delete','ImportController@destroy');
+
 
    // Supplier Controller 
    Route::get('supplier/add', 'SupplierController@add');

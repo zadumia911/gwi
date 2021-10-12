@@ -25,81 +25,81 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="join_date">Date</label>
+                        <label for="purchase_date">Date</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
-                            <input type="text" name="join_date" class="form-control myDate" />
+                            <input type="text" name="purchase_date" class="form-control myDate" />
                         </div>
-                        @if ($errors->has('join_date'))
+                        @if ($errors->has('purchase_date'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('join_date') }}</strong>
+                            <strong>{{ $errors->first('purchase_date') }}</strong>
                         </span>
                         @endif
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="category_id">Supplier Type <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
-                            <option value="">Select Type</option>
+                        <label for="supplier_type">Type <span>*</span></label>
+                        <select  class="supplier_type form-control select2{{ $errors->has('supplier_type') ? ' is-invalid' : '' }}" name="supplier_type" value="{{ old('supplier_type') }}" required>
+                            <option value=""></option>
                             <option value="1">Local</option>
                             <option value="2">Foreign</option>
                         </select>
-                        @if ($errors->has('category_id'))
+                        @if ($errors->has('supplier_type'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('category_id') }}</strong>
+                            <strong>{{ $errors->first('supplier_type') }}</strong>
                         </span>
                         @endif
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="category_id">Supplier Name <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
-                            <option value="">Select Supplier</option>
-                            <option value="1">Local</option>
-                            <option value="2">Foreign</option>
+                        <label for="supplier_id">Supplier <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('supplier_id') ? ' is-invalid' : '' }}" id="supplier" name="supplier_id" value="{{ old('supplier_id') }}" required>
                         </select>
-                        @if ($errors->has('category_id'))
+                        @if ($errors->has('supplier_id'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('category_id') }}</strong>
+                            <strong>{{ $errors->first('supplier_id') }}</strong>
                         </span>
                         @endif
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="pro_name">Old Due<span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('pro_name') ? ' is-invalid' : '' }}" id="pro_name" value="{{old('pro_name')}}" name="pro_name" placeholder="0.00" readonly />
-                        @if ($errors->has('pro_name'))
+                        <label for="due">Old Due<span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('due') ? ' is-invalid' : '' }}" id="due" value="{{old('due')}}" name="due" placeholder="0.00" readonly />
+                        @if ($errors->has('due'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('pro_name') }}</strong>
+                            <strong>{{ $errors->first('due') }}</strong>
                         </span>
                         @endif
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="category_id">PO Number <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
-                            <option value="">Select PO</option>
+                        <label for="po_number">PO Number <span>*</span></label>
+                        <select class="form-control select2{{ $errors->has('po_number') ? ' is-invalid' : '' }}" name="po_number" id="po_number"  required>
+                            <option value="">Select</option>
+                            @foreach($localcost as $value)
+                            <option value="{{$value->id}}">{{$value->gw_po}}</option>
+                            @endforeach
                         </select>
-                        @if ($errors->has('category_id'))
+                        @if ($errors->has('po_number'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('category_id') }}</strong>
+                            <strong>{{ $errors->first('po_number') }}</strong>
                         </span>
                         @endif
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="pack_size">LC Number<span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('pack_size') ? ' is-invalid' : '' }}" id="pack_size" value="{{old('pack_size')}}" name="pack_size" placeholder="0.00" readonly />
-                        @if ($errors->has('pack_size'))
+                        <label for="lc_number">LC Number<span>*</span></label>
+                        <input type="text" class="form-control {{ $errors->has('lc_number') ? ' is-invalid' : '' }}" id="lc_number" value="{{old('lc_number')}}" name="lc_number" placeholder="0.00" readonly />
+                        @if ($errors->has('lc_number'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('pack_size') }}</strong>
+                            <strong>{{ $errors->first('lc_number') }}</strong>
                         </span>
                         @endif
                     </div>
@@ -109,6 +109,9 @@
                         <label for="category_id">Item Name <span>*</span></label>
                         <select class="form-control select2{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
                             <option value="">Select Item</option>
+                            @foreach($products as $value)
+                            <option value="{{$value->id}}">{{$value->pro_name}}</option>
+                            @endforeach
                         </select>
                         @if ($errors->has('category_id'))
                         <span class="invalid-feedback" role="alert">
@@ -329,5 +332,24 @@
         </div>
     </form>
 </div>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#po_number').on('change',function(){
+        var id = $(this).val();
+          $.ajax({
+               type:"GET",
+               url:"{{url('editor/purchse/lcost-info')}}?id="+id,
+               success:function(res){               
+                if(res){
+                    console.log(res);
+                    $("#lc_number").empty();
+                     $("#lc_number").val(res.lc_number);
+                }else{
+                   $("#supplier").empty();
+                }
+               }
+            });
+       });
+    });
+</script>
 @endsection

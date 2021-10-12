@@ -23,6 +23,7 @@ class CreateLocalCostsTable extends Migration
             $table->integer('destination_id')->nullable();
             $table->integer('lc_number')->nullable();
             $table->string('lc_date')->nullable();
+            $table->integer('lc_cost')->nullable();
             $table->integer('lc_amount')->nullable();
             $table->integer('bank_id');
             $table->string('container_receive');
