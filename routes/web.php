@@ -250,6 +250,36 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::get('customer/sale/collection','CustomerController@salecollection');
    Route::get('customer/due-list','CustomerController@duelist');
 
+   // Sale Controller 
+   Route::get('sale/add', 'SaleController@add');
+   Route::get('sale/manage', 'SaleController@manage');
+   Route::post('sale/save', 'SaleController@save');
+   Route::get('sale/edit/{id}', 'SaleController@edit');
+   Route::post('sale/update', 'SaleController@update');
+   Route::post('sale/inactive','SaleController@inactive');
+   Route::post('sale/active','SaleController@active');
+   Route::post('sale/delete','SaleController@destroy');
+
+   // Customer Collection Controller 
+   Route::get('collection/add', 'CustomerCollectionController@add');
+   Route::get('collection/manage', 'CustomerCollectionController@manage');
+   Route::post('collection/save', 'CustomerCollectionController@save');
+   Route::get('collection/edit/{id}', 'CustomerCollectionController@edit');
+   Route::post('collection/update', 'CustomerCollectionController@update');
+   Route::post('collection/inactive','CustomerCollectionController@inactive');
+   Route::post('collection/active','CustomerCollectionController@active');
+   Route::post('collection/delete','CustomerCollectionController@destroy');
+
+   // Payment Controller 
+   Route::get('payment/add', 'PaymentController@add');
+   Route::get('payment/manage', 'PaymentController@manage');
+   Route::post('payment/save', 'PaymentController@save');
+   Route::get('payment/edit/{id}', 'PaymentController@edit');
+   Route::post('payment/update', 'PaymentController@update');
+   Route::post('payment/inactive','PaymentController@inactive');
+   Route::post('payment/active','PaymentController@active');
+   Route::post('payment/delete','PaymentController@destroy');
+
    // Expense Head Controller 
    Route::get('expensehead/add', 'ExpenseHeadController@add');
    Route::get('expensehead/manage', 'ExpenseHeadController@manage');

@@ -472,13 +472,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
+<<<<<<< HEAD
                     <a href="{{url('admin/customer/collection/add')}}" class="nav-link">
+=======
+                    <a href="{{url('editor/collection/add')}}" class="nav-link">
+>>>>>>> 9e8535525d5c814aa12ad88f1279851724bf9c31
                       <i class="far fa-circle nav-icon"></i>
                       <p>Collection</p>
                     </a>
                   </li>
                   <li class="nav-item">
+<<<<<<< HEAD
                     <a href="{{url('admin/customer/collection/manage')}}" class="nav-link">
+=======
+                    <a href="{{url('editor/collection/manage')}}" class="nav-link">
+>>>>>>> 9e8535525d5c814aa12ad88f1279851724bf9c31
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Collection</p>
                     </a>
@@ -502,13 +510,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
+<<<<<<< HEAD
                     <a href="{{url('admin/supplier/payment/add')}}" class="nav-link">
+=======
+                    <a href="{{url('editor/payment/add')}}" class="nav-link">
+>>>>>>> 9e8535525d5c814aa12ad88f1279851724bf9c31
                       <i class="far fa-circle nav-icon"></i>
                       <p>Payment</p>
                     </a>
                   </li>
                   <li class="nav-item">
+<<<<<<< HEAD
                     <a href="{{url('admin/supplier/payment/manage')}}" class="nav-link">
+=======
+                    <a href="{{url('editor/payment/manage')}}" class="nav-link">
+>>>>>>> 9e8535525d5c814aa12ad88f1279851724bf9c31
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Payment</p>
                     </a>
