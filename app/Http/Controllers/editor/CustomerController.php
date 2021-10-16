@@ -93,4 +93,12 @@ class CustomerController extends Controller
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/editor/customer/manage');         
     }
+    public function salecollection(Request $request){
+        $res = Customer::find($request->customer);
+        return response()->json($res)  ;       
+    }
+    public function duelist(){
+        $show_datas = Customer::whereNotNull('customer_due')->where('customer_due','>','0')->get();;
+        return view('backEnd.customer.duelist',compact('show_datas'));         
+    }
 }

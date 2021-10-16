@@ -50,7 +50,7 @@
           <tr>
             <td>{{$loop->iteration}}</td>
             <td>{{$value->receive_date}}</td>
-            <td>{{$value->lc_number}}</td>
+            <td>{{$value->lc_no}}</td>
             <td>{{$value->lc_date}}</td>
             <td>{{$value->lc_amount}}</td>
             <td>{{$value->supplier?$value->supplier->supplier_name:'$value->supplier'}}</td>
@@ -58,7 +58,7 @@
             <td>{{$value->shipping_port}}</td>
             <td>{{$value->bank->bank_name}}</td>
             <td>{{$value->destination?$value->destination->destination_name:''}}</td>
-            <td>{{$value->gw_po}}</td>
+            <td>{{$value->po}}</td>
             <td>{{$value->supplier_invoice}}</td>
             <td>{{App\LocalCostDetails::where('cost_id',$value->id)->sum('amount')}}</td>
              <td> 

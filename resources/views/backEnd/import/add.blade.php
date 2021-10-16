@@ -28,7 +28,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                     </div>
-                    <input type="text" onfocus="this.type='date'" onfocusout="this.type='text'" value="Date" id="date" class="form-control myDate" name="import_date">
+                    <input type="text" onfocus="this.type='date'" onfocusout="this.type='text'" value="{{date('Y-m-d')}}" id="date" class="form-control myDate" name="import_date">
                   </div>
                 </div>
               </div> 
@@ -403,17 +403,14 @@
              url : "{{url('editor/import/save')}}",
              data:dataString,            
              success:function(res){
-             //alert(res);
-             //  $("html, body").animate({ scrollTop: 0 }, 150);
-             //  if(res == 1)
-             //   $('.res').html('<i class="fa fa-check" style="color:green;font-size:24px;"></i>Import added Successfully');
-             //  else if(res == 0)
-             //   $('.res').html('<i class="fa fa-times" style="color:red;font-size:24px;"></i>Product Purchased Not Created'); 
-             //  else
-             //    $('.res').html('<i class="fa fa-times" style="color:red;font-size:24px;"></i> '+res+' Category Name  Aleady Existed');
-             // setTimeout(function(){
-             //   location.reload();
-             // },50);
+              if(res.status==='success'){
+                 toastr.success('Success!!','Data save successfully');
+              }else{
+                toastr.error('Opps!!','Data save failed');
+              }
+              setTimeout(function(){
+                   location.reload();
+                },50);
              }
       });
        e.preventDefault();

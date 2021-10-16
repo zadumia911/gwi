@@ -18,256 +18,291 @@
     </div>
 </section>
 <div class="card">
-    <!-- form start -->
-    <form action="{{url('/editor/localcost/save')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="receive_date">Receiving Date</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                            </div>
-                            <input type="text"  name="receive_date" class="form-control myDate" />
-                        </div>
-                        @if ($errors->has('receive_date'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('receive_date') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="cost_type">Type <span>*</span></label>
-                        <select  class="cost_type form-control select2{{ $errors->has('cost_type') ? ' is-invalid' : '' }}" name="cost_type" value="{{ old('cost_type') }}" required>
-                            <option value=""></option>
-                            <option value="1">Local</option>
-                            <option value="2">Foreign</option>
-                        </select>
-                        @if ($errors->has('cost_type'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('cost_type') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="supplier_id">Exporter Name <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('supplier_id') ? ' is-invalid' : '' }}" id="supplier" name="supplier_id" value="{{ old('supplier_id') }}" required>
-                        </select>
-                        @if ($errors->has('supplier_id'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('supplier_id') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4 hide_input">
-                    <div class="form-group">
-                        <label for="cf_agent">C & F Agent Name </label>
-                        <select class="form-control select2{{ $errors->has('cf_agent') ? ' is-invalid' : '' }}" name="cf_agent" value="{{ old('cf_agent') }}">
-                            <option value="">Select..</option>
-                            @foreach($cfagents as $key=>$value)
-                            <option value="{{$value->id}}">{{$value->cf_name}}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('cf_agent'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('cf_agent') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4 hide_input">
-                    <div class="form-group">
-                        <label for="shipping_port">Shipping Port</label>
-                        <input  type="text" class="form-control {{ $errors->has('shipping_port') ? ' is-invalid' : '' }}" id="shipping_port" value="{{old('shipping_port')}}" name="shipping_port" placeholder="Enter Shipping Port" />
-                        @if ($errors->has('shipping_port'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('shipping_port') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4 hide_input">
-                    <div class="form-group">
-                        <label for="destination_id">Destination </label>
-                        <select class="form-control select2{{ $errors->has('destination_id') ? ' is-invalid' : '' }}" name="destination_id" value="{{ old('destination_id') }}">
-                            <option value=""></option>
-                            @foreach($destination as $key=>$value)
-                            <option value="{{$value->id}}">{{$value->destination_name}}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('destination_id'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('destination_id') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4 hide_input">
-                    <div class="form-group">
-                        <label for="lc_number">LC Number </label>
-                        <input type="text" class="form-control {{ $errors->has('lc_number') ? ' is-invalid' : '' }}" id="lc_number" value="{{old('lc_number')}}" name="lc_number" placeholder="LC Number" />
-                        @if ($errors->has('lc_number'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('lc_number') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4 hide_input">
-                    <div class="form-group">
-                        <label for="lc_date">LC Opening Date </label>
-                        <input type="date" class="form-control {{ $errors->has('lc_date') ? ' is-invalid' : '' }} myDate" id="lc_date" value="{{old('lc_date')}}" name="lc_date" placeholder="LC Date" />
-                        @if ($errors->has('lc_date'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('lc_date') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="lc_amount">LC Amount (USD) <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('lc_amount') ? ' is-invalid' : '' }}" id="lc_amount" value="{{old('lc_amount')}}" name="lc_amount" placeholder="LC Amount (USD)" />
-                        @if ($errors->has('lc_amount'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('lc_amount') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="bank_id">Bank Name <span>*</span></label>
-                        <select class="form-control select2{{ $errors->has('bank_id') ? ' is-invalid' : '' }}" name="bank_id" value="{{ old('bank_id') }}" required>
-                            <option value="">Select..</option>
-                            @foreach($banks as $key=>$value)
-                            <option value="{{$value->id}}">{{$value->bank_name}}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('bank_id'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('bank_id') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="container_receive">Container Receiver <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('container_receive') ? ' is-invalid' : '' }}" id="container_receive" value="{{old('container_receive')}}" name="container_receive" placeholder="Container Received by" />
-                        @if ($errors->has('container_receive'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('container_receive') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="gw_po">GW PO <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('gw_po') ? ' is-invalid' : '' }}" id="gw_po" value="{{$gw_po}}" name="gw_po" placeholder="Purchase Order No..." readonly />
-                        @if ($errors->has('gw_po'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('gw_po') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="supplier_invoice">Supplier Invoice <span>*</span></label>
-                        <input type="text" class="form-control {{ $errors->has('supplier_invoice') ? ' is-invalid' : '' }}" id="supplier_invoice" value="{{old('supplier_invoice')}}" name="supplier_invoice" placeholder="Supplier Invoice No..." />
-                        @if ($errors->has('supplier_invoice'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('supplier_invoice') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
+    <div class="card-body">
+        <!-- form start -->
+    <form id="cusSupForm">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+               <label></label>
+                <input type="text" onfocus="this.type='date'" onfocusout="this.type='text'" value="{{date('Y-m-d')}}" id="date" class="form-control" name="receive_date" placeholder="Date">
+              </div>
+          </div>  
+           <div class="col-md-4">
+            <div class="form-group">
+              <label></label>
+              <select name="cost_type" class="form-control select2" id="type_id">
+                <option value="">Select Type</option>
+                <option value="1">Local</option>
+                <option value="2">Foreign</option>
+              </select>
+            </div>  
             </div>
+
+            <div class="col-md-4">
+            <div class="form-group">
+              <label></label>
+              <select class="form-control select2" style="width: 100%;height:30px" name="supplier_id" required="" id="supplier_id">
+                <option value="">Select Exporter</option>
+              </select>
+            </div>
+            </div>
+          <div class="col-md-4 foreign">
+            <div class="form-group">
+              <label></label>
+               <select name="cf_agent" class="form-control select2" id="cf_name" required="true">
+                <option value="" selected="selected">Select C&F Agent</option>
+                @foreach($cfagents as $key=>$value)
+                <option value="{{$value->id}}">{{$value->cf_name}}</option>
+                @endforeach
+                </select>
+            </div>
+          </div>  
+          <div class="col-md-4 foreign">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="shipping_port" placeholder="Shipping Port" id="cf_phn" class="form-control"  autocomplete="off">
+            </div>
+          </div>  
+          <div class="col-md-4 foreign">
+            <div class="form-group">
+              <label></label>
+               <select name="destination_id" class="form-control select2" id="port">
+               @foreach($destination as $key=>$value)
+                <option value="{{$value->id}}">{{$value->destination_name}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div> 
+          <div class="col-md-4 foreign">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="lc_number"  class="form-control" placeholder="LC Number">
+              </div>
+          </div>
+          <div class="col-md-4 foreign">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="lc_date" id="lc_date" class="form-control" placeholder="LC Date" value="{{date('Y-m-d')}}" autocomplete="off" onfocus="this.type='date'" onfocusout="this.type='text'">
+            </div>
+          </div>
+          <div class="col-md-4 foreign">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="lc_amount" placeholder="LC Amount (USD)" id="lc_amount" class="form-control"  autocomplete="off">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label></label>
+              <select name="bank_id" class="form-control select2" id="bank_name" style="width: 100%;height:30px">
+                <option value="" selected="selected">Select Bank</option>
+                  @foreach($banks as $key=>$value)
+                     <option value="{{$value->id}}">{{$value->bank_name}}</option>
+                 @endforeach
+                </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="container_receive" placeholder="Container Received by" id="rcv_by" class="form-control"  autocomplete="off">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="gw_po" placeholder="Purchase Order No" id="po" class="form-control" value="{{$gw_po}}" autocomplete="off" readonly>
+            </div>
+          </div> 
+          <div class="col-md-4">
+            <div class="form-group">
+              <label></label>
+              <input type="text" name="supplier_invoice" placeholder="Supplier Invoice No" id="sin" class="form-control"   autocomplete="off">
+            </div>
+          </div> 
         </div>
-        <!-- /.card-body -->
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-bordered" id="emptbl">
-                    <thead class="bg-info">
-                        <tr>
-                            <th>Head Name</th>
-                            <th>Amount</th>
-                            <th>Comment</th>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        <tr> 
-                            <td id="col0">
-                             <select class="form-control" name="costhead_id[]" value="{{ old('costhead_id') }}" required>
-                                <option value="">Select..</option>
-                                @foreach($lcosthead as $key=>$value)
-                                <option value="{{$value->id}}">{{$value->local_cost_head}}</option>
-                                @endforeach
-                            </select>
-                            </td>
-                            <td id="col1"><input type="number" class="form-control" placeholder="Amount*" name="amount[]" value="" /></td> 
-                            <td id="col2"><input type="text" class="form-control" placeholder="Comment" name="comment[]" value="" /></td> 
-                        </tr> 
-                    </tbody> 
-                </table> 
-                 <table class="my-1 float-right"> 
-                    <tbody>
-                        <tr> 
-                            <td><input type="button" class="btn-primary" value="Add" onclick="addRows()" /></td> 
-                            <td><input type="button" class="btn-danger" value="Remove" onclick="deleteRows()" /></td> 
-                        </tr> 
-                    </tbody> 
-                </table>
+      </form>
+      <h3 style="text-align: center;">Head Cost Entry</h3>
+      <form id="product_form">  
+        <div class="row">   
+          
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Head Name</label>
+              <select class="form-control select2" style="width: 100%;height:30px" name="head_id"  id="head_id" autocomplete="off">
+                <option value="">Select Head</option>
+                @foreach($lcosthead as $key=>$value)
+                <option value="{{$value->id}}">{{$value->local_cost_head}}</option>
+                @endforeach
+              </select>
             </div>
-        </div> 
-        <div class="card-footer">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button type="reset" class="btn btn-default">Clear</button>
+          </div>        
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Amount</label>
+              <input type="number" name="paid" placeholder="0.00" id="paid" class="form-control"  autocomplete="off">
             </div>
-    </form>
+          </div> 
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Comment</label>
+              <input type="text" name="comment" placeholder="Enter Comment" id="comment" class="form-control"  autocomplete="off">
+            </div>
+          </div> 
+
+        </div>
+      </form>
+
+      
+       <br>
+        <form method="POST" id="add_form">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="table-div">
+              <table id="firstTable" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th class="text-center">*</th>
+                  <th class="text-center">Head Name</th>
+                  <th class="text-center">Amount</th>
+                  <th class="text-center">Comment</th>
+                  <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>  
+              </table>       
+            </div>
+          </div>
+          
+          
+        </div>
+        <div class="card-footer" style="text-align: center;margin-bottom: 10px;">
+          <button type="reset" class="btn btn-danger">Reset</button>
+          <button type="button" onclick="this.type='submit'" class="btn btn-info">Submit</button>
+        </div>
+      </form>
+    </div>
 </div>
 <script type="text/javascript">
-function addRows(){ 
-    var table = document.getElementById('emptbl');
-    var rowCount = table.rows.length;
-    var cellCount = table.rows[0].cells.length; 
-    var row = table.insertRow(rowCount);
-    for(var i =0; i <= cellCount; i++){
-        var cell = 'cell'+i;
-        cell = row.insertCell(i);
-        var copycel = document.getElementById('col'+i).innerHTML;
-        cell.innerHTML=copycel;
-        if(i == 2){ 
-            var radioinput = document.getElementById('col2').getElementsByTagName('input'); 
-            for(var j = 0; j <= radioinput.length; j++) { 
-                if(radioinput[j].type == 'radio') { 
-                    var rownum = rowCount;
-                    radioinput[j].name = 'gender['+rownum+']';
+ 
+function AddData() {
+   
+    $('#add').attr('disabled',true);
+    var customer_id = $("#head_id").val();
+    var paid = $("#paid").val();
+    var comment = $("#comment").val();
+    
+    if(customer_id == ''){
+       alert('Client Cant be Empty');
+       return false;
+    }
+    else if(paid == ''){
+       alert('Amount Cant be Empty');
+       return false;
+    } 
+    else {
+
+        var rows = "";
+        var newRow = $("<tr>");
+        var cols = "";
+        var i = 0;
+      cols += '<td style="text-align: center;"></td>';
+
+      cols += '<td><select class="form-control select2 head" style="width: 100%;height:30px;background-color:none" name="head_id[]" >@foreach($lcosthead as $key=>$value)<option value="{{$value->id}}">{{$value->local_cost_head}}</option>@endforeach </select></td>';
+      cols += '<td><input type="text" name="amount[]" class="form-control paid"  readonly="true" value="'+paid+'" style="background:none;border-radius:0px"  required="true"/></td>';
+      cols += '<td><input type="text" name="comment[]" class="form-control comment"  readonly="true" value="'+comment+'" style="background:none;border-radius:0px"  required="true"/></td>';
+      cols += '<td> <a id="remCF" class="btn btn-sm ibtnDel"><i class="fa fa-trash" style="color:red"></i></a></td>';
+      newRow.append(cols);  
+      $("#firstTable tbody").append(newRow);
+      $(" .head:last > option").each(function() {
+         var sup = this.value;
+         if(sup == customer_id){
+           $(this).attr('selected', 'selected');
+         } 
+
+        });
+
+      $('.select2').select2();   
+      sl();   
+      ResetForm();
+      event.preventDefault();
+     }
+}
+function sl(){
+  $('table#firstTable  tr').not(':first').not(':last').each(function($id){
+  $(this).children().first().html($id + parseInt(0));
+})
+}
+function ResetForm() {
+    document.getElementById("product_form").reset();
+    $("#head_id").val(null).trigger('change');
+    $('#add').attr('disabled',false);
+}
+$("table#firstTable").on("click", ".ibtnDel", function (event) {
+  $(this).closest("tr").remove(); 
+  sl();
+});
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+   $('#product_form').on('keypress',function(e){
+      if(e.which == 13) {
+          AddData();    
+      }
+    });
+    $('#type_id').on('change',function(){
+        $("#supplier_id").empty();
+        var type_id = $(this).val();
+         $.ajax({
+               type:"GET",
+               url:"{{url('editor/supplier/find')}}?supplier_type="+type_id,
+               success:function(res){               
+                if(res){
+                    $("#supplier_id").empty();
+                     $("#supplier_id").append('<option value="0">Select...</option>');
+                    $.each(res,function(key,value){
+                        $("#supplier_id").append('<option value="'+key+'" class="supplier">'+value+'</option>');
+                    });
+               
+                }else{
+                   $("#supplier").empty();
                 }
+               }
+            });
+        if(type_id == '1')
+          $('.foreign').hide();
+        else
+          $('.foreign').show();
+    });
+    $('#add_form').on('submit',function(e){
+       var dataString = $("#add_form , #cusSupForm").serialize();
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        }
-    }
-}
-function deleteRows(){
-    var table = document.getElementById('emptbl');
-    var rowCount = table.rows.length;
-    console.log(rowCount);
-    if(rowCount > '2'){
-        var row = table.deleteRow(rowCount-1);
-        rowCount--;
-    }
-    else{
-        alert('There should be atleast one row');
-    }
-}
+       });
+      $.ajax({
+             type:'post',
+             url : "{{url('/editor/localcost/save')}}",
+             data:dataString,            
+             success:function(res){
+              if(res.status==='success'){
+                 toastr.success('Success!!','Data save successfully');
+              }else{
+                toastr.error('Opps!!','Data save failed');
+              }
+              setTimeout(function(){
+               location.reload();
+              },50);
+             }
+      });
+       e.preventDefault();
+    });
+  });
 </script>
 @endsection

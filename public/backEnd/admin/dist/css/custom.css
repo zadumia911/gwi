@@ -18,13 +18,13 @@ body{
 .card.card-body h6 {
     font-size: 14px;
 }
-html {
+/*html {
     overflow: scroll;
 }
 ::-webkit-scrollbar {
     width: 0; 
     background: transparent;
-}
+}*/
 .nav-pills .nav-link {
     border-radius: 0;
     padding: 12px 15px;
@@ -297,4 +297,16 @@ body:not(.layout-fixed) .main-sidebar {
     width: 100%;
     height: 350px;
     overflow-y: scroll;
+}
+div#table-div td input {
+    width: 80px;
+}
+div#table-div {
+    overflow-x: scroll;
+}
+
+footer.main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

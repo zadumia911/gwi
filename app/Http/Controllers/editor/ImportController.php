@@ -17,6 +17,7 @@ class ImportController extends Controller
         $product = Product::where('status',1)->get();
         return view('backEnd.import.add',compact('localcost','product'));
     }
+
     public function save(Request $request){
         $this->validate($request,[
             'import_date'=>'required',
@@ -57,8 +58,7 @@ class ImportController extends Controller
             ];
         }
         ImportDetails::insert($data);
-        Toastr::success('success!!', 'Data insert successfully');
-        return redirect('editor/import/manage');
+        return response()->json(['status'=>'success']);
     }
     public function manage(){
         $show_datas = Import::latest()->get();
@@ -89,5 +89,10 @@ class ImportController extends Controller
         $destroy_id->delete();
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/editor/import/manage');         
+    }
+
+    public function importinfo(Request $request){
+       $res = ImportDetails::where('item_id',$request->product_id)->with('product')->first();
+       return response()->json($res);
     }
 }

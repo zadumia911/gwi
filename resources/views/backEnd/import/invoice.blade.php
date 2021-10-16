@@ -39,7 +39,7 @@
 
         }
         #fb{
-          background: url("http://bondhon-bd.com/gwi/assets/invoice/wm.png") no-repeat center center; 
+          background: url("{{asset('public/backEnd/img/wm.png')}}") no-repeat center center; 
           background-position: center;
           z-index:1;
            min-height: 1130px !important;

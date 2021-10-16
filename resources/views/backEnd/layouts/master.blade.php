@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GWI::@yield('title','Dashboard')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
     <!-- Theme style -->
-
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
     <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
     <!-- DataTables end -->
-  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css">
-  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css">
-  <!-- jQuery -->
-<script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
+   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/adminlte.min.css">
+   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/toastr.min.css">
+   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/plugins/select2/css/select2.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+   <link rel="stylesheet" href="{{asset('public/backEnd/admin')}}/dist/css/custom.css">
+   <!-- jQuery -->
+  <script src="{{asset('public/backEnd/admin')}}/plugins/jquery/jquery.min.js"></script>
 </head>
 
   <body class="hold-transition sidebar-mini">
@@ -37,7 +35,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{url('superadmin/dashboard')}}" class="nav-link">Home</a>
           </li>
         </ul>
 
@@ -111,6 +109,12 @@
                     <a href="{{url('superadmin/user/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage User</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{url('superadmin/opening/cash')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Opening Cash</p>
                     </a>
                   </li>
                 </ul>
@@ -384,19 +388,19 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcost/add')}}" class="nav-link">
+                    <a href="{{url('editor/purchase/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Purchase Report</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcost/manage')}}" class="nav-link">
+                    <a href="{{url('editor/supplier/history')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Supplier Ledger</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/product/manage')}}" class="nav-link">
+                    <a href="{{url('editor/supplier/due-list')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Supplier Due List</p>
                     </a>
@@ -426,31 +430,31 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                    <a href="{{url('editor/sale/add')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Sale</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcosthead/manage')}}" class="nav-link">
+                    <a href="{{url('editor/sale/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Sale</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcost/add')}}" class="nav-link">
+                    <a href="{{url('editor/sale/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Sale Report</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcost/manage')}}" class="nav-link">
+                    <a href="{{url('editor/customer/ledger')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Customer Ledger</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/product/manage')}}" class="nav-link">
+                    <a href="{{url('editor/customer/due-list')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Customer Due List</p>
                     </a>
@@ -468,19 +472,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/add')}}" class="nav-link">
+                    <a href="{{url('admin/customer/collection/add')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Collection</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                    <a href="{{url('admin/customer/collection/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Collection</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                    <a href="{{url('admin/customer/collection/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Collection Report</p>
                     </a>
@@ -498,19 +502,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/add')}}" class="nav-link">
+                    <a href="{{url('admin/supplier/payment/add')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Payment</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                    <a href="{{url('admin/supplier/payment/manage')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Payment</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/localcosthead/add')}}" class="nav-link">
+                    <a href="{{url('admin/supplier/payment/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Payment Report</p>
                     </a>
@@ -528,13 +532,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/add')}}" class="nav-link">
+                    <a href="{{url('editor/stock/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Stock Report</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/customer/manage')}}" class="nav-link">
+                    <a href="{{url('editor/stock/ledger')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Item Wise Stock Ledger</p>
                     </a>
@@ -588,19 +592,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/expensehead/add')}}" class="nav-link">
+                    <a href="{{url('admin/expence/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Expense Report</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/expensehead/manage')}}" class="nav-link">
+                    <a href="{{url('admin/income/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Income Report</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('editor/dailyexpense/add')}}" class="nav-link">
+                    <a href="{{url('admin/bank-statement/report')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Bank Statement</p>
                     </a>
@@ -618,7 +622,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{url('editor/expensehead/add')}}" class="nav-link">
+                    <a href="{{url('admin/account/cashbook/')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Cash Book</p>
                     </a>
@@ -639,6 +643,7 @@
       <!-- /.content-wrapper -->
 
       <!-- Main Footer -->
+      <div class="py-4"></div>
       <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">

@@ -44,19 +44,6 @@
             <td class="action_button">
               <ul class="manage-btn-group">
                 <li><a href="{{url('admin/withdraw/edit/'.$value->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a></li>
-                <li>@if($value->status==1)
-                  <form action="{{url('admin/withdraw/inactive')}}" method="POST">
-                      @csrf
-                      <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                      <button type="submit" class="btn btn-secondary" title="Inactive" onclick="return confirm('Are you want change this?')"><i class="fa fa-thumbs-down"></i></button>
-                  </form>
-                @else
-                <form action="{{url('admin/withdraw/active')}}" method="POST">
-                  @csrf
-                  <input type="hidden" name="hidden_id" value="{{$value->id}}">
-                  <button type="submit" class="btn btn-success"  onclick="return confirm('Are you want change this?')" title="Active"><i class="fa fa-thumbs-up"></i></button> 
-                </form></li>
-                @endif
                 <li>
                   <form action="{{url('admin/withdraw/delete')}}" method="POST">
                     @csrf

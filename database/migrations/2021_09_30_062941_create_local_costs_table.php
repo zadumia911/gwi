@@ -21,13 +21,13 @@ class CreateLocalCostsTable extends Migration
             $table->integer('cf_agent')->nullable();
             $table->string('shipping_port')->nullable();
             $table->integer('destination_id')->nullable();
-            $table->integer('lc_number')->nullable();
+            $table->integer('lc_no')->nullable();
             $table->string('lc_date')->nullable();
             $table->integer('lc_cost')->nullable();
             $table->integer('lc_amount')->nullable();
             $table->integer('bank_id');
             $table->string('container_receive');
-            $table->string('gw_po');
+            $table->string('po');
             $table->string('supplier_invoice');
             $table->timestamps();
         });

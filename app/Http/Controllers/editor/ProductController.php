@@ -7,10 +7,30 @@ use Illuminate\Http\Request;
 use App\Brand;
 use App\Category;
 use App\Product;
+use App\Import;
 use Toastr;
+use DB;
 
 class ProductController extends Controller
 {    
+
+    
+    public function pproductinfo (Request $request){
+        $item_info = Import::where('po_number',$request->po)->first();
+        $res = DB::table("import_details")
+        ->join('products','import_details.item_id','=','products.id')
+        ->where("import_details.import_id",$item_info->id)
+        ->pluck('products.pro_name','products.id');
+        return response()->json($res);
+    }
+    public function saleproductinfo (Request $request){
+      $res = DB::table("purchase_details")
+        ->join('products','purchase_details.product_id','=','products.id')
+        ->select('purchase_details.*','products.stock')
+        ->where("purchase_details.product_id",$request->product_id)
+        ->first();
+        return response()->json($res);
+    } 
     public function add(){
         $brand = Brand::where('status',1)->get();
         $category = Category::where('status',1)->get();

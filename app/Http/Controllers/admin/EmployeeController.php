@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
      public function add(){
         $last_employee = Employee::orderBy('id','DESC')->first();
-        $employee_code =  'E-'.str_pad($last_employee->id, 2, '0', STR_PAD_LEFT);
+        $employee_code =  'E-'.str_pad($last_employee->id+1, 2, '0', STR_PAD_LEFT);
         return view('backEnd.employee.add',compact('employee_code'));
     }
     public function save(Request $request){
@@ -114,5 +114,9 @@ class EmployeeController extends Controller
         $destroy_id->delete();
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/admin/employee/manage');         
+    }
+    public function salaryinfo(Request $request){
+        $res = Employee::find($request->employee_id);
+        return response()->json($res);
     }
 }

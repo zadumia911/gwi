@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superadmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Companyinfo;
+use App\OpeningCash;
 use File;
 use Toastr;
 class CompanyinfoController extends Controller
@@ -94,6 +95,20 @@ class CompanyinfoController extends Controller
         $destroy_id->delete();
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/superadmin/companyinfo/manage');         
+    }
+    public function openingcash(){
+        $show_datas = OpeningCash::get();
+        return view('backEnd.companyinfo.cashmanage',compact('show_datas'));
+    }
+    public function cashedit(Request $request){
+        $this->validate($request,[
+            'amount'=>'required',
+        ]);
+        $cash_update = OpeningCash::find($request->hidden_id);
+        $cash_update->amount=$request->amount;
+        $cash_update->save();
+        Toastr::success('success!!', 'Cash edit successfully');
+        return redirect('/superadmin/opening/cash');
     }
 
 }

@@ -15,6 +15,13 @@ class SupplierController extends Controller
         ->where("supplier_type",$request->supplier_type)
         ->pluck('supplier_name','id');
         return response()->json($supplier);
+    } 
+    public function paymentinfo(Request $request){
+        $supplier = DB::table("suppliers")
+        ->where("id",$request->supplier)
+        ->select('supplier_due')
+        ->first();
+        return response()->json($supplier);
     }
     public function add(){
         return view('backEnd.supplier.add');
@@ -90,11 +97,18 @@ class SupplierController extends Controller
         Toastr::success('success!!', 'Data active successfully');
         return redirect('/editor/supplier/manage');        
     }
-
     public function destroy(Request $request){
         $destroy_id = Supplier::find($request->hidden_id);
         $destroy_id->delete();
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/editor/supplier/manage');         
+    }
+    public function duelist(){
+        $show_datas = Supplier::whereNotNull('supplier_due')->get();;
+        return view('backEnd.supplier.duelist',compact('show_datas'));       
+    }
+    public function history(){
+        $show_datas = Supplier::whereNotNull('supplier_due')->get();;
+        return view('backEnd.supplier.duelist',compact('show_datas'));       
     }
 }

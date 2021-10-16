@@ -17,6 +17,8 @@ Route::group(['as'=>'superadmin.', 'prefix'=>'superadmin', 'namespace'=>'superad
    Route::post('/companyinfo/inactive','CompanyinfoController@inactive');
    Route::post('/companyinfo/active','CompanyinfoController@active');
    Route::post('/companyinfo/delete','CompanyinfoController@destroy');
+   Route::get('/opening/cash','CompanyinfoController@openingcash');
+   Route::post('/cash/edit','CompanyinfoController@cashedit');
 
    // User
    Route::get('/user/add', 'UserController@add');
@@ -41,6 +43,7 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('employee/inactive','EmployeeController@inactive');
    Route::post('employee/active','EmployeeController@active');
    Route::post('employee/delete','EmployeeController@destroy');
+   Route::get('employee/salary-info','EmployeeController@salaryinfo');
 
    // SalaryheadController
    Route::get('salaryhead/add', 'SalaryheadController@add');
@@ -102,10 +105,29 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'admin','middlewar
    Route::post('deposit/active','DepositController@active');
    Route::post('deposit/delete','DepositController@destroy');  
 
-     
-
    // Admin reports controller
    Route::get('employee-salary/report','ReportsController@empsalaryreport');
+   Route::get('bank-statement/report','ReportsController@bankstatement');
+   Route::get('expence/report','ReportsController@expencereport');
+   Route::get('income/report','ReportsController@incomereport');
+   Route::get('/account/cashbook/','ReportsController@cashbook');
+
+  Route::get('customer/collection/add', 'CustomerCollectionController@colladd');
+  Route::post('customer/collection/save', 'CustomerCollectionController@collsave');
+  Route::get('customer/collection/manage', 'CustomerCollectionController@collmanage');
+  Route::get('customer/collection/report', 'CustomerCollectionController@collreport');
+  Route::post('customer/collection/active','CustomerCollectionController@collactive');
+  Route::post('customer/collection/delete','CustomerCollectionController@colldestroy'); 
+  Route::post('customer/collection/report','CustomerCollectionController@collreport'); 
+
+
+  Route::get('supplier/payment/add', 'SupplierPaymentController@add');
+  Route::post('supplier/payment/save', 'SupplierPaymentController@save');
+  Route::get('supplier/payment/manage', 'SupplierPaymentController@manage');
+  Route::get('supplier/payment/report', 'SupplierPaymentController@report');
+  Route::post('supplier/payment/active','SupplierPaymentController@active');
+  Route::post('supplier/payment/delete','SupplierPaymentController@destroy'); 
+  Route::post('supplier/payment/report','SupplierPaymentController@report'); 
 
 });
 
@@ -141,6 +163,8 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('product/inactive','ProductController@inactive');
    Route::post('product/active','ProductController@active');
    Route::post('product/delete','ProductController@destroy');
+   Route::get('purchase-product/info','ProductController@pproductinfo');
+   Route::get('sale/product-collection','ProductController@saleproductinfo');
 
    // C & F Controller 
    Route::get('cnf/add', 'CFController@add');
@@ -161,6 +185,7 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('localcosthead/inactive','LocalCostHeadController@inactive');
    Route::post('localcosthead/active','LocalCostHeadController@active');
    Route::post('localcosthead/delete','LocalCostHeadController@destroy');
+   
 
    // Local Cost Controller 
    Route::get('localcost/add', 'LocalCostController@add');
@@ -169,6 +194,7 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('localcost/save', 'LocalCostController@save');
    Route::post('localcost/delete','LocalCostController@destroy');
    Route::get('lcost-info','LocalCostController@lcost');
+   Route::get('purchase/local-cost','LocalCostController@localcost');
 
 
    // Import Controller 
@@ -178,6 +204,7 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::get('import/report/{id}', 'ImportController@reportinvoice');
    Route::post('import/save', 'ImportController@save');
    Route::post('import/delete','ImportController@destroy');
+   Route::get('purchse/import-info','ImportController@importinfo');
 
 
    // Supplier Controller 
@@ -190,16 +217,26 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('supplier/active','SupplierController@active');
    Route::post('supplier/delete','SupplierController@destroy');
    Route::get('supplier/find','SupplierController@supplierfind');
+   Route::get('supplier/payment-info','SupplierController@paymentinfo');
+   Route::get('supplier/due-list','SupplierController@duelist');
+   Route::get('supplier/history','SupplierController@history');
 
    // Purchase Controller 
    Route::get('purchase/add', 'PurchaseController@add');
    Route::get('purchase/manage', 'PurchaseController@manage');
    Route::post('purchase/save', 'PurchaseController@save');
-   Route::get('purchase/edit/{id}', 'PurchaseController@edit');
-   Route::post('purchase/update', 'PurchaseController@update');
-   Route::post('purchase/inactive','PurchaseController@inactive');
-   Route::post('purchase/active','PurchaseController@active');
    Route::post('purchase/delete','PurchaseController@destroy');
+   Route::get('purchase/report','PurchaseController@report');
+   Route::get('purchase/report/{id}','PurchaseController@reportinvoice');
+
+   // sale route
+   Route::get('sale/add', 'SaleController@add');
+   Route::get('sale/manage', 'SaleController@manage');
+   Route::post('sale/save', 'SaleController@save');
+   Route::post('sale/delete','SaleController@destroy');
+   Route::get('sale/report','SaleController@report');
+   Route::get('sale/report/{id}','SaleController@reportinvoice');
+
 
    // Customer Controller 
    Route::get('customer/add', 'CustomerController@add');
@@ -210,6 +247,8 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('customer/inactive','CustomerController@inactive');
    Route::post('customer/active','CustomerController@active');
    Route::post('customer/delete','CustomerController@destroy');
+   Route::get('customer/sale/collection','CustomerController@salecollection');
+   Route::get('customer/due-list','CustomerController@duelist');
 
    // Expense Head Controller 
    Route::get('expensehead/add', 'ExpenseHeadController@add');
@@ -231,22 +270,18 @@ Route::group(['as'=>'editor.', 'prefix'=>'editor', 'namespace'=>'editor','middle
    Route::post('dailyexpense/active','DailyExpenseController@active');
    Route::post('dailyexpense/delete','DailyExpenseController@destroy');
 
-
-
-
-
-
-
-
-
-   
+   Route::get('stock/report','ReportsController@stock');
+   Route::get('stock/ledger','ReportsController@stockledger');
+  
 });
 
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'author','middleware'=>['auth', 'author']], function(){
  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-
 Auth::routes();
+Route::group(['middleware'=>['auth']], function(){
+ Route::get('password/change', 'ChangePassController@index');
+ Route::post('password/updated', 'ChangePassController@updated');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');

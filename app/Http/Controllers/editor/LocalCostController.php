@@ -15,6 +15,7 @@ use DB;
 
 class LocalCostController extends Controller
 {    
+
     public function add(){
         $cfagents = CF::where('status',1)->latest()->get();
         $banks = Bank::where('status',1)->latest()->get();
@@ -25,7 +26,6 @@ class LocalCostController extends Controller
         return view('backEnd.localcost.add',compact('cfagents','banks','lcosthead','destination','gw_po'));
     }
     public function save(Request $request){
-        
         $store_data                   =   new LocalCost();
         $store_data->receive_date     =   $request->receive_date;
         $store_data->cost_type        =   $request->cost_type;
@@ -36,24 +36,22 @@ class LocalCostController extends Controller
         $store_data->lc_number        =   $request->lc_number;
         $store_data->lc_date          =   $request->lc_date;
         $store_data->lc_amount        =   $request->lc_amount;
-        $store_data->lc_cost        =   array_sum($request->amount);
+        $store_data->lc_cost          =   array_sum($request->amount);
         $store_data->bank_id          =   $request->bank_id;
         $store_data->container_receive=   $request->container_receive;
         $store_data->gw_po            =   $request->gw_po;
         $store_data->supplier_invoice =   $request->supplier_invoice;
         $store_data->save();
         
-       for ($i = 0; $i < count($request->costhead_id); $i++) {
+       for ($i = 0; $i < count($request->head_id); $i++) {
             $data[] = [
                 'cost_id'     => $store_data->id,
-                'costhead_id' => $request->costhead_id[$i],
+                'costhead_id' => $request->head_id[$i],
                 'amount'      => $request->amount[$i],
                 'comment'     => $request->comment[$i]
             ];
         }
-        LocalCostDetails::insert($data);
-        Toastr::success('success!!', 'Data insert successfully');
-        return redirect('editor/localcost/manage');
+        return response()->json(['status'=>'success']);
     }
     public function manage(){
         $show_datas = LocalCost::latest()->get();
@@ -70,7 +68,11 @@ class LocalCostController extends Controller
         return redirect('/editor/localcost/manage');         
     }
     public function lcost(Request $request){
-        $data = LocalCost::find($request->id);
+        $data = LocalCost::where('gw_po',$request->id)->first();
         return response()->json(['lc_cost'=>$data->lc_cost,'lc_no'=>$data->lc_number]);
+    }
+    public function localcost(Request $request){
+        $res = LocalCost::where('gw_po',$request->gw_po)->first();
+        return response()->json(['lc_no'=>$res->lc_number]);
     }
 }

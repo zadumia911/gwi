@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepositsTable extends Migration
+class CreateOpeningCashesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateDepositsTable extends Migration
      */
     public function up()
     {
-        Schema::create('deposits', function (Blueprint $table) {
+        Schema::create('opening_cashes', function (Blueprint $table) {
             $table->id();
-            $table->integer('bank_id');
-            $table->string('date')->length('55');
-            $table->string('amount')->length('100');
-            $table->string('note')->length('255')->nullable();
-            $table->tinyInteger('status');
+            $table->string('comment');
+            $table->float('amount')->length('11','2');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateDepositsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deposits');
+        Schema::dropIfExists('opening_cashes');
     }
 }

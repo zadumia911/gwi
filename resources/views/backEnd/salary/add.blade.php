@@ -37,7 +37,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                       <label for="employee_id">Select Employee <span>*</span></label>
-                      <select class="form-control select2{{ $errors->has('employee_id') ? ' is-invalid' : '' }}" name="employee_id" value="{{ old('employee_id') }}" required>
+                      <select class="form-control select2{{ $errors->has('employee_id') ? ' is-invalid' : '' }}" name="employee_id" value="{{ old('employee_id') }}" id="employee_id" required>
                         <option>Select..</option>
                         @foreach($employees as $key=>$value)
                         <option value="{{$value->id}}">{{$value->name}}</option>
@@ -53,7 +53,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="salary">Salary </label>
-                        <input type="text" disabled class="form-control {{ $errors->has('salary') ? ' is-invalid' : '' }}" id="salary" placeholder="Salary" value="{{old('salary')}}" name="salary"/>
+                        <input type="text" disabled class="form-control {{ $errors->has('salary') ? ' is-invalid' : '' }}" id="salary" readonly placeholder="Salary" value="" name="salary"/>
 						@if ($errors->has('salary'))
 						<span class="invalid-feedback" role="alert">
 							<strong>{{ $errors->first('salary') }}</strong>
@@ -125,5 +125,19 @@
         </div>
     </form>
 </div>
-
+<script>
+    $(document).ready(function(){
+    $("#employee_id").on('change',function(){
+      var employee_id = $(this).val();  
+      $.ajax({
+          method:"GET",
+          url:"{{url('admin/employee/salary-info')}}",
+          data:{employee_id:employee_id},
+          success:function(res){
+             $('#salary').val(res.salary); 
+          }              
+      });
+  });
+     });
+</script>
 @endsection

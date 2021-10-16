@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Withdraw;
+use App\BankStatement;
 use App\Bank;
 use Toastr;
 class WithdrawController extends Controller
@@ -21,10 +21,11 @@ class WithdrawController extends Controller
             'amount'=>'required',
             'status'=>'required',
         ]);
-        $store_data                =   new Withdraw();
+        $store_data                =   new BankStatement();
         $store_data->bank_id       =   $request->bank_id;
         $store_data->cheque_number =   $request->cheque_number;
         $store_data->amount        =   $request->amount;
+        $store_data->type          =   'withdraw';
         $store_data->note          =   $request->note;
         $store_data->status        =   $request->status;
         $store_data->save();
@@ -32,12 +33,12 @@ class WithdrawController extends Controller
         return redirect('admin/withdraw/manage');
     }
     public function manage(){
-        $show_datas = Withdraw::latest()->get();
+        $show_datas = BankStatement::where('type','withdraw')->latest()->get();
         return view('backEnd.withdraw.manage',compact('show_datas'));
     }
     public function edit($id){
         $banks = Bank::where('status',1)->get();
-        $edit_data = Withdraw::find($id);
+        $edit_data = BankStatement::find($id);
         return view('backEnd.withdraw.edit',compact('edit_data','banks'));
     }
     public function update(Request $request){
@@ -47,7 +48,7 @@ class WithdrawController extends Controller
             'amount'=>'required',
             'status'=>'required',
         ]);
-        $update_data = Withdraw::find($request->hidden_id);
+        $update_data = BankStatement::find($request->hidden_id);
         $update_data->bank_id      =   $request->bank_id;
         $update_data->cheque_number=   $request->cheque_number;
         $update_data->amount       =   $request->amount;
@@ -58,14 +59,14 @@ class WithdrawController extends Controller
         return redirect('admin/withdraw/manage');
     }
     public function inactive(Request $request){
-        $inactive_data = Withdraw::find($request->hidden_id);
+        $inactive_data = BankStatement::find($request->hidden_id);
         $inactive_data->status=0;
         $inactive_data->save();
         Toastr::success('success!!', 'Data inactive successfully');
         return redirect('/admin/withdraw/manage');      
     }
     public function active(Request $request){
-        $inactive_data = Withdraw::find($request->hidden_id);
+        $inactive_data = BankStatement::find($request->hidden_id);
         $inactive_data->status=1;
         $inactive_data->save();
         Toastr::success('success!!', 'Data active successfully');
@@ -73,7 +74,7 @@ class WithdrawController extends Controller
     }
 
     public function destroy(Request $request){
-        $destroy_id = Withdraw::find($request->hidden_id);
+        $destroy_id = BankStatement::find($request->hidden_id);
         $destroy_id->delete();
         Toastr::success('success!!', 'Data delete successfully');
         return redirect('/admin/withdraw/manage');         
